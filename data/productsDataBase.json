@@ -1,0 +1,20 @@
+[{
+        "id": 1,
+        "name": "Pedigree Complete",
+        "price": 1500,
+        "discount": 10,
+        "category": "alimentos",
+        "description": "Alimento seco Pedigree para perros de tamaño mediano en bolsa de 3kg",
+        "image": "pedigree.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Royal Canin Tiny fit",
+        "price": 1200,
+        "discount": 5,
+        "category": "alimentos",
+        "description": "Alimento seco Royal Canin para perros de tamaño pequeño en bolsa de 2kg",
+        "image": "royalcanin.jpg"
+    }
+
+]

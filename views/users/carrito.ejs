@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/header.ejs') %>
+            <h3 class="título">Carrito de Compras</h3>
+            <section class="carritoDeCompras">
+                <nav class="carritoBox1">
+                    <h4 class="titulin">Tu carrito</h4>
+                    <form action="Agregar" method="get">
+                        <p>
+                            <button class="botonAdd" type="submit"> + Agregar productos</button>
+                        </p>
+                    </form>
+                </nav>
+
+                <nav class="carritoBox2">
+                    <ul class="titulin" type="none">
+                        <li>Productos</li>
+                        <li> - </li>
+                        <li> - </li>
+                        <li>--------------- </li>
+                        <li>Subtotal $</li>
+                        <li>Total $</li>
+                    </ul>
+                    <form action="comprar" method="post">
+                        <p>
+                            <button class="botonComprar" type="submit">comprar!</button>
+                        </p>
+                    </form>
+                </nav>
+            </section>
+            <a class="home" href="/">Home</a>
+
+            <%- include('partials/footer.ejs') %>
+
+    </body>
+
+</html>

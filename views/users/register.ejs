@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/header.ejs') %>
+            <main>
+                <section class="formularios">
+                    <form action="/registro" method="post">
+                        <p class="etiquetas1">
+                            <label for="nombre">Tu nombre: </label>
+                        </p>
+                        <p class="inputs1">
+                            <input type="text" name="Nombre">
+                        </p>
+                        <p class="etiquetas1">
+                            <label for="apellido">Tu apellido: </label>
+                        </p>
+                        <p class="inputs1">
+                            <input type="text" name="Apellido">
+                        </p>
+                        <p class="etiquetas1">
+                            <label for="email">Tu e-mail: </label>
+                        </p>
+                        <p class="inputs1">
+                            <input type="email" name="email">
+                        </p>
+                        <p class="etiquetas1">
+                            <label for="usuario">Inventate un usuario: </label>
+                        </p>
+                        <p class="inputs1">
+                            <input type="text" name="usuario">
+                        </p>
+                        <p class="etiquetas1">
+                            <label for="clave">Creá tu contraseña: </label>
+                        </p>
+                        <p class="inputs1">
+                            <input type="password" name="clave">
+                        </p>
+                        <p class="etiquetas1">
+                            <label for="clave">Confirma la contraseña: </label>
+                        </p>
+                        <p class="inputs1">
+                            <input type="password" name="clave">
+                        </p>
+                        <p>
+                            <label for="Terminos">Aceptas los términos de uso?</label>
+                            <input type="checkbox" name="terms">
+                        </p>
+                        <p class="boton1">
+                            <button type="submit">REGISTRATE!</button>
+                        </p>
+                    </form>
+                </section>
+            </main>
+            <%- include('partials/footer.ejs') %>
+    </body>
+
+</html>

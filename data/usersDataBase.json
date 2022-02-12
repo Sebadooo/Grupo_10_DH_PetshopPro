@@ -1,0 +1,31 @@
+[{
+        "id": 1,
+        "nickname": "Sebastian",
+        "lastname": "Alvarez",
+        "alias": "kakaroto",
+        "email": "sebadoo@hotmail.com",
+        "password": "Teeterboard1234",
+        "category": "admin",
+        "image": "usuario_1.jpg"
+    },
+    {
+        "id": 2,
+        "nickname": "Cristian",
+        "lastname": "Greco",
+        "alias": "Crisgrec",
+        "email": "carielgreco@gmail.com",
+        "password": "miperrodinamita",
+        "category": "user",
+        "image": "usuario_2.jpg"
+    },
+    {
+        "id": 3,
+        "nickname": "Fernando",
+        "lastname": "Pioletti",
+        "alias": "ferpio1985",
+        "email": "fernando.pioletti@gmail.com",
+        "password": "miperrodinamita",
+        "category": "user",
+        "image": "usuario_3.jpg"
+    }
+]

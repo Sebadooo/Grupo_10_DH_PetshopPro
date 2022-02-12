@@ -1,0 +1,298 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: crimson;
+}
+
+.LogoPrincipal {
+    width: 30vw;
+    margin: 15px 0 15px 15px;
+    border-radius: 60px;
+    box-shadow: gray 5px 5px 5px;
+}
+
+h1.Titulo {
+    width: 50vw;
+    background-color: white;
+    margin: 0 20px 0 0;
+    padding: 10px;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: gray 2px 2px 2px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serifs;
+    font-size: 3rem;
+    text-align: center;
+    border-radius: 20px;
+    border: dashed 1.5px gray;
+}
+
+.BarraDeMenu {
+    margin: 0;
+    width: 100vw;
+    background-color: crimson;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellow;
+    text-shadow: gray 2px 2px 2px;
+    display: flex;
+    justify-content: space-between;
+    border-top: gray 2px solid;
+    border-bottom: gray 2px solid;
+}
+
+.menu_1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 60vw;
+    font-size: 1.3rem;
+    font-weight: bold;
+    align-items: center;
+    padding: 10px 0 10px 0;
+}
+
+.menu_2 {
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: gray 5px;
+    padding-right: 10px;
+}
+
+a:link {
+    color: yellow;
+    text-shadow: gray 2px 2px 2px;
+}
+
+a:hover {
+    color: blue;
+    text-shadow: white 2px 2px 2px;
+}
+
+a:visited {
+    color: none;
+}
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0 20px 0;
+}
+
+.productos img {
+    width: 25vw;
+}
+
+.productoPerros {
+    display: flex;
+    justify-content: space-around;
+}
+
+.produ {
+    width: 25vw;
+    border: solid 2px grey;
+}
+
+.produ img {
+    width: 20vw;
+}
+
+.agregar-carrito {
+    width: 15vw;
+    margin: 5px 5vw 5px 5vw;
+}
+
+.formularios {
+    font-family: calibri;
+    margin: 20px 20vw 20px 20vw;
+    padding: 30px;
+    align-items: center;
+    font-weight: bold;
+    border: solid 1px crimson;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.título {
+    display: flex;
+    justify-content: center;
+    color: rgb(53, 52, 52);
+    text-shadow: rgb(218, 217, 217) 2px 2px 2px;
+    width: 100%;
+    font-family: exo 2;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 2vw 0 2vw 0;
+}
+
+.etiquetas1 {
+    font-size: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.inputs1 {
+    width: 100%;
+    justify-content: center;
+}
+
+.footer {
+    width: 100vw;
+    align-items: center;
+    background-color: crimson;
+    border: solid 2px gray;
+    font-size: 1.2rem;
+    line-height: 1rem;
+    position: relative;
+}
+
+.footer a {
+    margin: 15px 20px 15px 0;
+    font-size: 1.1rem;
+}
+
+@keyframes circACuad {
+    0% {
+        border-radius: 100px;
+        background-color: gold;
+    }
+    50% {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        background-color: orange;
+    }
+    100% {
+        border-radius: 0;
+        background-color: red;
+    }
+}
+
+.efectito {
+    width: 30px;
+    height: 30px;
+    border: solid 1px black;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    animation: circACuad 5s infinite alternate;
+}
+
+.titulin {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    text-align: center;
+    margin: 15px 20px 15px 0;
+    font-size: 1.1rem;
+    text-decoration: underline;
+}
+
+.nosotros {
+    text-align: center;
+    margin: 15px 20px 15px 0;
+}
+
+.menuChico {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    text-align: center;
+    margin: 15px 20px 15px 0;
+}
+
+.contacto {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    margin: 15px 20px 15px 0;
+    text-align: center;
+}
+
+.sucursales {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    margin: 15px 20px 15px 0;
+    text-align: center;
+}
+
+.LoguitoYRedes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.LogoChico {
+    text-align: center;
+    width: 20vw;
+    border-radius: 60px;
+    margin: 15px 30px 15px 30px;
+    box-shadow: gray 5px 5px 5px;
+    border-bottom: 15px;
+}
+
+.redes {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    margin: 15px 0 15px 0;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.carritoDeCompras {
+    display: flex;
+    justify-content: space-around;
+}
+
+.carritoBox1 {
+    width: 60vw;
+    background-color: white;
+    border: black 2px solid;
+}
+
+.carritoBox2 {
+    width: 30vw;
+    border: black 2px solid;
+}
+
+.botonAdd {
+    width: 50vw;
+    height: 80px;
+    color: rgb(82, 161, 82);
+    border: dashed 2px green;
+    border-radius: 6px 6px;
+    margin: 0 5vw 0 5vw;
+}
+
+.botonComprar {
+    width: 20vw;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: green;
+    color: lightgreen;
+    border: dashed 2px rgb(1, 83, 1);
+    border-radius: 6px 6px;
+    margin: 0 5vw 2vw 5vw;
+}
+
+.add-carrito {
+    width: 15vw;
+    display: flex;
+    size: 15vw;
+    align-self: center;
+    justify-content: space-around;
+}

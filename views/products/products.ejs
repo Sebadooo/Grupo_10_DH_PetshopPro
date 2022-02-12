@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/header.ejs') %>
+
+            <main>
+                <h3 class="título">Alimentos para Perros</h3>
+
+                <% products.forEach(products => { %>
+                    <section class="productoPerros">
+
+                        <div class="produ">
+                            <a href="/products/detail/<%=productsDataBase.id%>">
+                                <div>img src="/images/
+                                    <%=productsDataBase.image%>" alt="pedigree"></div>
+                                <h2>
+                                    <%=productsDataBase.name%>
+                                </h2>
+                                <p>
+                                    <%= productsDataBase.price%>
+                                </p>
+                                <div>Descuento del
+                                    <%=productsDataBase.discount%>
+                                </div>
+                            </a>
+                        </div>
+
+                    </section>
+                    <%}) %>
+            </main>
+            <%- include('partials/footer.ejs') %>
+
+    </body>
+
+</html>

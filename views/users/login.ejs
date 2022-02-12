@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/header.ejs') %>
+            <main>
+                <h3 class="título">INICIA SESION</h3>
+                <section class="formularios">
+                    <form action="/registro" method="post">
+                        <p class="etiquetas1">
+                            <label for="nombre">Usuario: </label>
+                        </p>
+                        <p class="inputs1">
+                            <input type="text" name="usuario">
+                        </p>
+                        <p class="etiquetas1">
+                            <label for="clave">Contraseña: </label>
+                        </p>
+                        <p class="inputs1">
+                            <input type="password" name="clave">
+                        </p>
+                        <p class="boton1">
+                            <button type="submit">INGRESAR!</button>
+                        </p>
+                    </form>
+                </section>
+            </main>
+            <%- include('partials/footer.ejs') %>
+    </body>
+
+</html>

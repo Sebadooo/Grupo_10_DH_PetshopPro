@@ -1,0 +1,16 @@
+{
+  "name": "prueba",
+  "version": "1.0.0",
+  "description": "Prueba",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Seba",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
