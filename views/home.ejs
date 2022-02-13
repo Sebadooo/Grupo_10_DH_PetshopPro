@@ -5,42 +5,17 @@
 
     <body>
         <%- include('partials/header.ejs') %>
-            <nav class="BarraDeMenu">
-                <section>
-                    <ul class="menu_1" type="none">
-                        <li><a href="alimentos">Alimentos</a></li>
-                        <li><a href="accesorios">Accesorios</a></li>
-                        <li><a href="digital_spa">Digital Spa</a></li>
-                        <li><a href="digital_vet">Digital Vet</a></li>
-                    </ul>
-                </section>
-                <section class="add-carrito">
-                    <a class="irCarrito" href="/carrito"><i class="fas fa-cart-plus"></i></a>
-
-                    <a class="addProduct" href="/products"><i class="fas fa-plus-square"></i></a>
-                </section>
-                <section>
-                    <ul class="menu_2" type="none">
-                        <li><a href="/iniciarSesion">Iniciá sesión</a></li>
-                        <li><a href="/crearCuenta">Creá tu cuenta</a></li>
-                    </ul>
-
-                </section>
-            </nav>
+        
+        <%- include('partials/navbar.ejs') %>
+            
             <main>
                 <section class="productos">
-                    <a href='/productoPerros'>
-                        <img src="/images/perros.jpg" alt="perros">
-                    </a>
+                    <img src="/images/perros.jpg" alt="perros">
                     <img src="/images/gatos.jpg" alt="gatos">
                     <img src="/images/accesorios.jpg" alt="accesorios">
-
                 </section>
-                section class="gatito"> img src="/images/Gatito.png" alt="Gatito">
-                </section>
-
             </main>
-            <%- include('partials/footer.ejs') %>
 
+            <%- include('partials/footer.ejs') %>
 </body>
 </html>

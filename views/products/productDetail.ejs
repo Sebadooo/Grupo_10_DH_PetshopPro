@@ -4,6 +4,9 @@
 
     <body>
         <%- include('partials/header.ejs') %>
+
+        <%- include('partials/navbar.ejs') %>
+
             <main>
 
                 <!-- product detail -->
@@ -52,6 +55,9 @@
 
                                     <a href="/products/edit/<%= products.id%>" class="action-button edit">EDITAR PRODUCTO</a>
 
+                                    <form action="/products/edit/<%= products.id%>?_method=PUT" method="POST" style="display: inline-flex">
+                                        <button type="submit" class="action-button edit">EDITAR</button>
+                                    </form>
                                     <form action="/products/delete/<%= products.id%>?_method=delete" method="POST" style="display: inline-flex">
                                         <button type="submit" class="action-button delete">ELIMINAR</button>
                                     </form>
