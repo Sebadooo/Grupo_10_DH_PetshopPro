@@ -5,14 +5,17 @@ const productController = require('../controllers/productsController');
 
 //PÚBLICO//
 /* GET ALL PRODUCTS (GET)*/
-router.get('/products', productController.showAll);
+router.get('/all', productController.showAll);
 
 /* PRODUCT DETAIL (GET)*/
-//router.get('/detail/:id/', productController.detail);
+//router.get('/detail/:id/', productController.showDetail);
+
+/* BUSQUEDA DE PRODUCTO (GET)*/
+//router.get('/products', productController.search);
 
 //ADMINISTRADOR//
 /* GET ALL PRODUCTS (GET)*/
-router.get('/products', productController.index);
+//router.get('/products', productController.index);
 
 /* CREATE A PRODUCT (GET/POST)*/
 //router.get('/prodCreate/', productController.create);

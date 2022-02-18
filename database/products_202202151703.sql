@@ -1,0 +1,4 @@
+INSERT INTO petshop_dhg10.products (prodcut_name,description,product_category_id,image,uom_code,price,creation_date,created_by,last_update_date,last_update_by) VALUES
+	 ('OLD PRINCE 15KG','Alimento balanceado Novel Cordero y Arroz Adulto',1,'\\public\\images','UN',6000.0,'2022-02-15 00:00:00',1,'2022-02-15 00:00:00',1),
+	 ('PEDIGREE 21KG','Alimento Balanceado Etapa 2 - Carne, pollo y cereales',1,'\\public\\images','UN',4300.0,'2022-02-15 00:00:00',1,'2022-02-15 00:00:00',1),
+	 ('ROYAL CANIN MINI 7,5KG','Alimento Balanceado Mini Adult',1,'\\public\\images','UN',5600.0,'2022-02-15 00:00:00',1,'2022-02-15 00:00:00',1);

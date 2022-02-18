@@ -9,8 +9,10 @@
         <%- include('partials/navbar.ejs') %>
 
         <main>
-                <section class="formularios">
-                    <form action="/registro" method="post">
+            <h3 class="título">REGISTRATE</h3>
+            <section class="formularios">
+                <form action="/users/register" method="POST"
+                enctype="multipart/form-data">
                         <p class="etiquetas1">
                             <label for="nombre">Tu nombre: </label>
                         </p>
@@ -30,34 +32,39 @@
                             <input type="email" name="email">
                         </p>
                         <p class="etiquetas1">
-                            <label for="usuario">Inventate un usuario: </label>
-                        </p>
-                        <p class="inputs1">
-                            <input type="text" name="usuario">
-                        </p>
-                        <p class="etiquetas1">
                             <label for="clave">Creá tu contraseña: </label>
                         </p>
                         <p class="inputs1">
-                            <input type="password" name="clave">
+                            <input type="password" name="password">
                         </p>
                         <p class="etiquetas1">
                             <label for="clave">Confirma la contraseña: </label>
                         </p>
                         <p class="inputs1">
-                            <input type="password" name="clave">
+                            <input type="password" name="password">
                         </p>
-                        <p>
-                            <label for="Terminos">Aceptas los términos de uso?</label>
-                            <input type="checkbox" name="terms">
-                        </p>
+                        <!-- <p class="inputs1">
+                            <label for="avatar">Ingresa tu foto de perfil: </label>
+                            <input type="file" name="avatar" accept=".jpg"multiple>
+                        </p> -->
                         <p class="boton1">
                             <button type="submit">REGISTRATE!</button>
                         </p>
                     </form>
                 </section>
             </main>
+                    
             <%- include('partials/footer.ejs') %>
-    </body>
+        </body>
 
 </html>
+<!-- < % if (typeof errors != 'undefined') { %>
+    <p style="color:red">Error en el formulario</p>
+    <ul>
+       < % for (let i = 0; i < errors.length; i++) %>
+            <li>
+                < %= errors[i].msg %> 
+            </li>
+        < % } % >
+    </ul>
+< % } %>  -->

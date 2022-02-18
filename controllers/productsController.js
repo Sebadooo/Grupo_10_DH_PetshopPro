@@ -6,18 +6,20 @@ const products = JSON.parse(fs.readFileSync(productsDataPath, 'utf-8'));
 
 const productController = {
 showAll: (req, res) => {
-    res.render("products")
+    res.render('products')
+
 },
 
-index: (req, res) => {
-    res.render("products")
+/*search: (req, res) => {
+  let busquedaDelUsuario = req.query.search;
+  res.send(busquedaDelUsuario);  
 },
 
 showDetail: (req, res) => {
-    res.send("productDetail", {detail:detail})
+    res.send("productDetail/id:", {products:products})
 },
 
-/*create: (req, res) => {
+create: (req, res) => {
     res.send("createProduct", {detail:detail})
 },
 
