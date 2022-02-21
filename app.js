@@ -38,3 +38,7 @@ const PORT =process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log("Servidor levantado en el puerto "+PORT)
 });
+
+    connection.sync ({ force:true }).then(() =>{
+        console.log("Se ha establecido la conexión con la Base de datos")
+    });

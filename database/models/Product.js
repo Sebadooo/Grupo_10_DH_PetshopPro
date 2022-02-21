@@ -1,32 +1,36 @@
 module.exports = (sequelize, DataTypes) => {
 
-    let alias = "Users";
+    let alias = "Products";
     let cols = {
-        user_id: {
+        product_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoincremental: true
         },
-        first_name: {
+        product_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        last_name: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        email: {
-            type: DataTypes.STRING,
+        procuct_category_id: {
+            type: DataTypes.INTEGER,
+            foreignKey: true
         },
-        password: {
+        image: {
             type: DataTypes.STRING,
             allowNull: false
         },
         image: {
             type: DataTypes.STRING,
         },
-        user_category_id: {
-            type: DataTypes.INTEGER,
+        uom_code: {
+            type: DataTypes.STRING,
+        },
+        price: {
+            type: DataTypes.INTEGER,            
         },
         creation_date: {
             type: DataTypes.DATE,
@@ -47,20 +51,20 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     let config = {
-        tableName: "users",
+        tableName: "products",
         underscored: true,
         timestamps: false
     };
 
-    const User = sequelize.define(alias, cols, config);
+    const Product = sequelize.define(alias, cols, config);
 
-    User.associate = function (models) {
-        User.hasMany(models.UserCategory,{
-            as: "user_category",
-            foreignKey: "user_category_id"    
+    Product.associate = function (models) {
+        Product.belongsTo(models.ProductCategory,{
+            as: "product_category",
+            foreignKey: "product_category_id"    
         })
     };
 
 
-    return User;
+    return Product;
 }

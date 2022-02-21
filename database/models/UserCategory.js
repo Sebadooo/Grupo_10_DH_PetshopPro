@@ -1,4 +1,4 @@
-module.exports = (Sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
 
     let alias = "user_category";
     let cols = {
@@ -8,11 +8,11 @@ module.exports = (Sequelize, DataTypes) => {
             autoincremental: true
         },
         category_name: {
-            type: DataTypes.SRTING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         description: {
-            type: DataTypes.SRTING,
+            type: DataTypes.STRING,
         },
         creation_date: {
             type: DataTypes.DATE,
@@ -33,17 +33,18 @@ module.exports = (Sequelize, DataTypes) => {
     };
 
     let config = {
-        tablename = "user_category",
+        tableName: "user_category",
+        underscored: true,     
         timestamps: false
     };
 
-    const UserCategory = Sequelize.define(alias, cols, config);
+    const UserCategory = sequelize.define(alias, cols, config);
 
-    UserCategory.associate = function(modelos){
-        UserCategory.belongsTo(modelos.Users,{
+    UserCategory.associate = function (models) {
+        UserCategory.belongsTo(models.User,{
             as: "user",
-            foreignKey: "user_category_id"    
-        });
+            foreignKey: "user_id"    
+        })
     }
 
     return UserCategory;

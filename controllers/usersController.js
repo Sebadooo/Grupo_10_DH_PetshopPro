@@ -1,56 +1,82 @@
 const fs = require('fs');
 const path = require('path');
-const db = require('../database/models/');
+const db = require('../database/models/index');
 const bcryptjs = require("bcryptjs");
 const { validationResult, check, body} = require ('express-validator');
 const multer = require ('multer');
 
 
-
 const usersController = {
+    //MUESTRA TODOS LOS USUARIOS REGISTRADOS//
+    showUsers: (req, res) => {
+        db.User.findAll({
+            include: [{association: "user_category"}]})
+        .then(function(usuarios){
+            res.render('./views/showUsers', {usuarios});
+        })
+        .catch(function(err){
+            console.log(err)
+        }) 
+    },
+//MUESTRA EL DETALLE DEL USUARIO SELECCIONADO//
+    usersDetail: (req, res) => {
+        db.User.findByPk(req.params.id, {  
+        include: [{ association : "user_Category"}]})
+        .then(function(usuario){
+            res.render('./views/detailUsers', {usuario})  
+        })
+        .catch(function(err){
+            console.log(err)
+        }) 
+    },
+//MUESTRA EL FORMILARIO DE REGISTRO//
     register: (req, res) => {
+        res.cookie("Tested", { maxAge: 1000 * 120 })
         res.render('register')
     },
+//GUARDA AL NUEVO USUARIO REGRISTRADO EN LA BASE DE DATOS//
     saveRegister: (req, res) => {
-         let errors = validationResult(req);
-            //return res.send(errors);
-            //Aquí determino si hay ó no errores encontrados
+         let valResults = validationResult(req);
             if(!errors.isEmpty()) {
-              return res.render(path.resolve(__dirname, '../views/register')),{
-                errors: errors.errors,  old: req.body
+              return res.render('register'),{
+                errors: valResults.mapped, 
+                old: req.body
               };
             } 
-            let user = {
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10),
-                //avatar: req.file ? req.file.filename : '',
-                user_category: 1
-              };
-        
-              User.create(user)
-              .then((storedUser) => {
-                  return  res.redirect('/login');
-              })
-              .catch(error => console.log(error));
-            },
-    
+            let usuarioexistente = user.findByField ("email")
 
-    /*login: (req, res) => {
-        users.findAll()
-        .then((users) => res.render('login'))
-        .catch((e) => console.log(e));
-    },*/
+            if (usuarioexistente == req.body.email) {
+                return res.render('Register', {
+                    errors: {
+                        email: {
+                            msg: "Este usuario ya existe"
+                        }
+                    },
+                    old: req.body
+                });
+            }
+                
+            let usuarioNuevo = {
+                    ...req.body,
+                    password: bcryptjs.hashSync(req.body.password, 10),
+                    avatar: req.file.filename
+                }
+        
+        
+                let usuarioCreado = User.create(usuarioNuevo);
+        
+            res.redirect('/views/login.ejs')
+        },
+    
+//MUESTRA EL FORMILARIO DE LOGIN O INICIAR SESION//    
     login: (req, res) => {
         res.render('login')
     },
-
+//PRECESA EL LOGIN, SI ES CORRECTO INGRESA CON CLAVE DE USUARIO NIVL 1//
     processLogin: (req, res) => {
         //Manejo de cookies
         if (req.body.remember) {
-            var hour = 3600;
-            req.session.cookie.maxAge = 14 * 24 * hour;
+            req.session.cookie.maxAge = 1000 *60 *24;
             res.cookie("amarillo", "Bienvenido usuario!");
         } else {
             req.session.cookie.expires = false;
@@ -68,7 +94,7 @@ const usersController = {
                 }
             })
             .catch((e) => console.log(e));
-    }
+    },
 
 
     /*processLogin: (req, res) => {
@@ -100,7 +126,13 @@ const usersController = {
         } else {
             return res.render ('login', {errors: errors.errors})
         }*/
-
+// CERRANDO SESION//
+        logout: (req,res) =>{
+            req.session.destroy();
+            res.cookie('email',null,{maxAge: -1});
+            res.redirect('/')
+          }
+      
 };
 
 
