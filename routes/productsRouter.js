@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const prodCreVal = require ('../middlewares/productValMiddleware') 
 const productController = require('../controllers/productsController');
 
 //PÚBLICO//
@@ -18,8 +18,8 @@ router.get('/all', productController.showAll);
 //router.get('/products', productController.index);
 
 /* CREATE A PRODUCT (GET/POST)*/
-//router.get('/prodCreate/', productController.create);
-//router.post('/prodCreate/', productController.store);
+router.get('/createProd', productController.create);
+router.post('/createProd', prodCreVal, productController.saveNewProduct);
 
 /* GET EDIT PRODUCT (GET/PUT)*/
 //router.get('/edit/:id', productController.edit);

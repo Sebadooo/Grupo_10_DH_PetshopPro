@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 
-    let alias = "user_category";
-    let cols = {
+    var alias = "user_category";
+    var cols = {
         user_category_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -13,39 +13,22 @@ module.exports = (sequelize, DataTypes) => {
         },
         description: {
             type: DataTypes.STRING,
-        },
-        creation_date: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        created_by: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        last_update_date: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        last_update_by: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     };
-
-    let config = {
+    var config = {
         tableName: "user_category",
-        underscored: true,     
+        underscored: true,
         timestamps: false
     };
 
     const UserCategory = sequelize.define(alias, cols, config);
 
-    UserCategory.associate = function (models) {
-        UserCategory.belongsTo(models.User,{
-            as: "user",
-            foreignKey: "user_id"    
-        })
-    }
+     UserCategory.associate = function (models) {
+          UserCategory.belongsTo(models.Users,{
+              as: "users",
+              foreignKey: "user_category_id"    
+          })
+      }
 
     return UserCategory;
 }

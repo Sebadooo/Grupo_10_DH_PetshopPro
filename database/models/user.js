@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 
-    let alias = "Users";
-    let cols = {
+    var alias = "Users";
+    var cols = {
         user_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         user_category_id: {
             type: DataTypes.INTEGER,
+            foreignKey: true
         },
         creation_date: {
             type: DataTypes.DATE,
@@ -46,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
 
-    let config = {
+    var config = {
         tableName: "users",
         underscored: true,
         timestamps: false
@@ -55,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define(alias, cols, config);
 
     User.associate = function (models) {
-        User.hasMany(models.UserCategory,{
+        User.hasMany(models.user_category,{
             as: "user_category",
             foreignKey: "user_category_id"    
         })

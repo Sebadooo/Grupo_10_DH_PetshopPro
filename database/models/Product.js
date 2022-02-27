@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 
-    let alias = "Products";
-    let cols = {
+    var alias = "Products";
+    var cols = {
         product_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -15,22 +15,19 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        procuct_category_id: {
+        product_category_id: {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        image: {
-            type: DataTypes.STRING,
+            allowNull: false  
         },
         uom_code: {
             type: DataTypes.STRING,
         },
         price: {
-            type: DataTypes.INTEGER,            
+            type: DataTypes.INTEGER,
         },
         creation_date: {
             type: DataTypes.DATE,
@@ -47,23 +44,21 @@ module.exports = (sequelize, DataTypes) => {
         last_update_by: {
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        } 
     };
 
-    let config = {
-        tableName: "products",
-        underscored: true,
+    var config = {
         timestamps: false
     };
 
     const Product = sequelize.define(alias, cols, config);
 
-    Product.associate = function (models) {
-        Product.belongsTo(models.ProductCategory,{
-            as: "product_category",
-            foreignKey: "product_category_id"    
-        })
-    };
+      Product.associate = function (models) {
+          Product.belongsTo(models.Product_Category,{
+              as: "products_cat",
+              foreignKey: "product_category_id"    
+          })
+      };
 
 
     return Product;

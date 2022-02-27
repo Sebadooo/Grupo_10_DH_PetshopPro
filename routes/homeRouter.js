@@ -1,5 +1,7 @@
 const express = require ("express")
 const router = express.Router();
+const db = require('../database/models/index');
+
 
 const genericController = require('../controllers/mainController');
 

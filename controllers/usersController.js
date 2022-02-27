@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const db = require('../database/models/index');
 const bcryptjs = require("bcryptjs");
-const { validationResult, check, body} = require ('express-validator');
+const { validationResult } = require ('express-validator');
 const multer = require ('multer');
 
 
@@ -36,16 +36,16 @@ const usersController = {
     },
 //GUARDA AL NUEVO USUARIO REGRISTRADO EN LA BASE DE DATOS//
     saveRegister: (req, res) => {
-         let valResults = validationResult(req);
-            if(!errors.isEmpty()) {
+         let valResults = validationResult(req); 
+            if(valResults.errors.length > 0) { 
               return res.render('register'),{
-                errors: valResults.mapped, 
+                errors: valResults.mapped(), 
                 old: req.body
-              };
+              }
             } 
-            let usuarioexistente = user.findByField ("email")
+            let usuarioExistente = user.findByField ("email")
 
-            if (usuarioexistente == req.body.email) {
+            if (usuarioExistente == req.body.email) {
                 return res.render('Register', {
                     errors: {
                         email: {
@@ -53,19 +53,18 @@ const usersController = {
                         }
                     },
                     old: req.body
-                });
-            }
+                })
+            };
                 
             let usuarioNuevo = {
                     ...req.body,
                     password: bcryptjs.hashSync(req.body.password, 10),
                     avatar: req.file.filename
                 }
+                
+            let usuarioCreado = User.create(usuarioNuevo);
         
-        
-                let usuarioCreado = User.create(usuarioNuevo);
-        
-            res.redirect('/views/login.ejs')
+            res.redirect('./views/login.ejs')
         },
     
 //MUESTRA EL FORMILARIO DE LOGIN O INICIAR SESION//    

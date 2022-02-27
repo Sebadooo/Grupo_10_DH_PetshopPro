@@ -5,55 +5,57 @@
     <body>
         <%- include('partials/header.ejs') %>
 
-        <%- include('partials/navbar.ejs') %>
+            <%- include('partials/navbar.ejs') %>
 
-            <main>
-                <section class="formularios">
-                    <form action="products/create" method="POST">
+                <main>
+                    <section class="formularios">
+                        <form action="/createProd" method="POST">
 
-                        <p class="etiquetas1">
-                            <label for="product" class="form-label">NOMBRE DEL PRODUCTO </label>
-                        </p>
-                        <p class="inputs1">
-                            <input type="text" id="name" name="producto" placeholder="Ingresa nombre acá" class="form-input">
-                        </p>
-                        <p class="etiquetas1">
-                            <label for="price" class="form-label">PRECIO </label>
-                        </p>
-                        <p class="inputs1">
-                            <input type="number" id="price" name="price" placeholder="$???" class="form-input">
-                        </p>
-                        <p class="etiquetas1">
-                            <label for="discount" class="form-label">% DE DESCUENTO </label>
-                        </p>
-                        <p class="inputs1">
-                            <input type="text" id="discount" name="discount" placeholder="%???" class="form-input">
-                        </p>
-                        <p class="etiquetas1">
-                            <label for="category" class="form-label">CATEGORÍA </label>
-                        </p>
-                        <p class="inputs1">
-                            <select name="category" id="product_category" class="form-input">
-                            <option value="">ELEGÍ UNA OPCIÓN</option>
-                            <option value="perros">PERROS</option>
-                            <option value="gatos">GATOS</option>
-                            <option value="accesorios">ACCESORIOS</option>
-                        </select>
-                        </p>
-                        <p class="etiquetas1">
-                            <label for="description" class="form-label">DESCRIPCIÓN </label>
-                        </p>
-                        <p class="inputs1">
-                            <textarea id="description" name="description" class="form-input"></textarea>
-                        </p>
+                            <p class="etiquetas1">
+                                <label for="product" class="form-label">NOMBRE DEL PRODUCTO </label>
+                            </p>
+                            <p class="inputs1">
+                                <input type="text" name="name" placeholder="Ingresa nombre acá"
+                                    class="form-input">
+                            </p>
+                            <p class="etiquetas1">
+                                <label for="description" class="form-label">DESCRIPCIÓN </label>
+                            <p class="inputs1">
+                                <textarea name="description" class="form-input"></textarea>
+                            </p>
+                            </p>
+                            <p class="etiquetas1">
+                                <label for="category" class="form-label">CATEGORÍA </label>
+                            </p>
+                            <p class="inputs1">
+                                <select name="category">
+                                    <% for (let i=0; i < product_category.length; i++) { %>
+                                        <option value="<%=product_category[i].id%>">
+                                            <%= product_category[i].name %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                            </p>
+                            <p>
+                                <label>SELECCIONA LA IMAGEN DEL PRODUCTO </label>
+                                <input type="file" name="prodImage" accept=".jpg" multiple>
 
-                        <p class="boton1">
-                            <button type="submit">CREAR!</button>
-                        </p>
-                    </form>
-                </section>
-            </main>
-            <%- include('partials/footer.ejs') %>
+                            </p>
+                            <label for="price" class="form-label">PRECIO EN $ </label>
+                            </p>
+                            <p class="inputs1">
+                                <input type="number" name="price" placeholder="$???" class="form-input">
+                            </p>
+
+                            </select>
+
+                            <p class="boton1">
+                                <button type="submit">CREAR!</button>
+                            </p>
+                        </form>
+                    </section>
+                </main>
+                <%- include('partials/footer.ejs') %>
     </body>
 
 </html>

@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-
-const productsDataPath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsDataPath, 'utf-8'));
+const db = require('../database/models/index');
+//const productsDataPath = path.join(__dirname, '../data/productsDataBase.json');
+//const products = JSON.parse(fs.readFileSync(productsDataPath, 'utf-8'));
 
 const genericController = {
     home: (req, res) => {
