@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const db = require('../database/models/index');
+const db = require('../database/models');
 const bcryptjs = require("bcryptjs");
 const { validationResult } = require ('express-validator');
 const multer = require ('multer');
@@ -11,8 +11,8 @@ const usersController = {
     showUsers: (req, res) => {
         db.User.findAll({
             include: [{association: "user_category"}]})
-        .then(function(usuarios){
-            res.render('./views/showUsers', {usuarios});
+        .then(function(User){
+            res.render('users', {User});
         })
         .catch(function(err){
             console.log(err)
@@ -22,54 +22,67 @@ const usersController = {
     usersDetail: (req, res) => {
         db.User.findByPk(req.params.id, {  
         include: [{ association : "user_Category"}]})
-        .then(function(usuario){
-            res.render('./views/detailUsers', {usuario})  
+        .then(function(User){
+            res.render('usersDetail', {User})  
         })
         .catch(function(err){
             console.log(err)
         }) 
     },
+//GUARDADO DEL NUEVO USUARIO CREADO//
+saveUser: (req, res) => {
+    db.users.create({
+        firt_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password:req.body.password,
+        avatar: req.body.avatar,
+    }
+    );
+    res.redirect("/")
+},
 //MUESTRA EL FORMILARIO DE REGISTRO//
     register: (req, res) => {
         res.cookie("Tested", { maxAge: 1000 * 120 })
-        res.render('register')
+        res.render('userRegister')
     },
 //GUARDA AL NUEVO USUARIO REGRISTRADO EN LA BASE DE DATOS//
-    saveRegister: (req, res) => {
-         let valResults = validationResult(req); 
-            if(valResults.errors.length > 0) { 
-              return res.render('register'),{
-                errors: valResults.mapped(), 
-                old: req.body
-              }
-            } 
-            let usuarioExistente = user.findByField ("email")
+     saveRegister: (req, res) => {
+          let valResults = validationResult(req)
+          console.log(valResults)
+             if(valResults.errors.length > 0) { 
+               return res.render('userRegister'),{
+                 errors: valResults.mapped(), 
+                 oldData: req.body
+               }
+             } 
+           let usuarioExistente = user.findByField ("email")
 
-            if (usuarioExistente == req.body.email) {
-                return res.render('Register', {
-                    errors: {
-                        email: {
-                            msg: "Este usuario ya existe"
-                        }
-                    },
-                    old: req.body
-                })
-            };
+           if (usuarioExistente == req.body.email) {
+                 return res.render('userRegister', {
+                     errors: {
+                         email: {
+                             msg: "Este usuario ya existe"
+                         }
+                     },
+                     old: req.body
+                 })
+             };
                 
-            let usuarioNuevo = {
-                    ...req.body,
-                    password: bcryptjs.hashSync(req.body.password, 10),
-                    avatar: req.file.filename
-                }
-                
-            let usuarioCreado = User.create(usuarioNuevo);
-        
-            res.redirect('./views/login.ejs')
-        },
+             let usuarioNuevo = {
+                     ...req.body,
+                     password: bcryptjs.hashSync(req.body.password, 10),                                                                                                                                                                                                                                                                                                                    
+                     avatar: req.file.filename
+                 };
+               
+             let usuarioCreado = User.create(usuarioNuevo);
+
+             res.redirect('./views/userLogin.ejs')
+         },
     
 //MUESTRA EL FORMILARIO DE LOGIN O INICIAR SESION//    
     login: (req, res) => {
-        res.render('login')
+        res.render('userLogin')
     },
 //PRECESA EL LOGIN, SI ES CORRECTO INGRESA CON CLAVE DE USUARIO NIVL 1//
     processLogin: (req, res) => {
@@ -89,13 +102,21 @@ const usersController = {
                     console.log('logged', req.session.userLogged);
                     res.redirect('/', { user: user });
                 } else {
-                    res.render('login');
+                    res.render('userLogin');
                 }
             })
             .catch((e) => console.log(e));
     },
-
-
+//CREAR NUEVO USUARIO (ADMIN)//
+createUser: (req, res) => {
+        db.User,findAll ()
+        .then (function(productos){
+            return res.render ("/")
+        })
+        .catch(function(e) {
+            console.log(e)
+        })
+    },
     /*processLogin: (req, res) => {
         let errors = validationResult(req);
 
@@ -115,7 +136,7 @@ const usersController = {
             }
         }
         if (usuarioALoguearse == undefined) {
-            return res.render ('login', {errors: [
+            return res.render ('userLogin', {errors: [
                 {msg: "Credenciales invalidas"}
                 ]});
             }
@@ -123,16 +144,19 @@ const usersController = {
             req.session.usuarioLogueado = usuarioALoguearse;
             res.redirect ("Login exitoso!");
         } else {
-            return res.render ('login', {errors: errors.errors})
+            return res.render ('userLogin', {errors: errors.errors})
         }*/
 // CERRANDO SESION//
         logout: (req,res) =>{
             req.session.destroy();
             res.cookie('email',null,{maxAge: -1});
             res.redirect('/')
-          }
-      
+        },
+          
+          // CARRITO DE COMPRAS //
+          shopCart: (req, res) => {
+              res.render('shopCart')
+        }
 };
-
 
 module.exports = usersController;

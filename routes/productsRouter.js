@@ -5,7 +5,7 @@ const productController = require('../controllers/productsController');
 
 //PÚBLICO//
 /* GET ALL PRODUCTS (GET)*/
-router.get('/all', productController.showAll);
+router.get('/products/all', productController.showAll);
 
 /* PRODUCT DETAIL (GET)*/
 //router.get('/detail/:id/', productController.showDetail);
@@ -18,8 +18,8 @@ router.get('/all', productController.showAll);
 //router.get('/products', productController.index);
 
 /* CREATE A PRODUCT (GET/POST)*/
-router.get('/createProd', productController.create);
-router.post('/createProd', prodCreVal, productController.saveNewProduct);
+router.get('/productCreate', productController.create);
+router.post('/productCreate', prodCreVal, productController.saveNewProduct);
 
 /* GET EDIT PRODUCT (GET/PUT)*/
 //router.get('/edit/:id', productController.edit);

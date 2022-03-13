@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-const db = require ('../database/models');
+const db = require ('../database/models/index');
 
 const productController = {
 //MUESTRA TODOS LOS PRODUCTOS
     showAll: (req, res) => {
-        db.products.findAll({ 
+        db.Product.findAll({ 
             include: [{association: "products_cat"}]})
         .then (function(products){
             res.render('products', {products:products}); 

@@ -5,12 +5,13 @@ const db = require('../database/models/index');
 
 const genericController = require('../controllers/mainController');
 
-// GET Admin.
+// GET Admin //
 router.get("/admin", genericController.admin);
-/* GET home page. */
+// GET home page //
 router.get("/", genericController.home); 
-
-
-//router.get('/', mainController.search);
+// GET ABOUT US //
+router.get("/aboutUs", genericController.aboutUs); 
+// GET ABOUT US //
+router.get("/contact", genericController.contact); 
 
 module.exports = router;

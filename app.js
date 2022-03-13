@@ -28,8 +28,8 @@ const usersRoute = require ("./routes/usersRouter");
 
 //Uso de los controladores//
 app.use("/", homeRoute); 
-app.use("/products", productsRoute); 
-app.use("/users", usersRoute); 
+app.use("/", productsRoute); 
+app.use("/", usersRoute); 
 
 //Setea el puerto//
 const PORT =process.env.PORT || 3000;

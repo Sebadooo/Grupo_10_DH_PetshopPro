@@ -5,16 +5,19 @@ const db = require('../database/models/index');
 //const products = JSON.parse(fs.readFileSync(productsDataPath, 'utf-8'));
 
 const genericController = {
+    // MUESTRA LA HOMEPAGE //
     home: (req, res) => {
         res.render('home') 
     },
-    
-        /* search: (req, res) => {
-        res.render('result', {
-            products
-        })
-        }*/
-    
+    // MUESTRA QUIENES SOMOS //
+    aboutUs: (req, res) => {
+        res.render('aboutUs')
+    },
+    // MUESTRA CONTACTO //
+    contact: (req, res) => {
+        res.render('contact')
+    },
+    // MUESTRA PANEL DE ADMINISTRADOR //
     admin: (req, res) => {
         res.render('admin')
     }
