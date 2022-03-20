@@ -22,29 +22,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        image: {
-            type: DataTypes.STRING,
-        },
         user_category_id: {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
-        creation_date: {
-            type: DataTypes.DATE,
-            allowNull: false
+        image: {
+            type: DataTypes.STRING,
         },
-        created_by: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        last_update_date: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        last_update_by: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
     };
 
     var config = {
@@ -57,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
 
     User.associate = function (models) {
         User.hasMany(models.user_category,{
-            as: "user_category",
+            as: "user_cat",
             foreignKey: "user_category_id"    
         })
     };

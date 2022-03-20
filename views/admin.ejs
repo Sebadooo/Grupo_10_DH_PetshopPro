@@ -1,1 +1,24 @@
-"Hola que tal!"
+<!DOCTYPE html>
+<html>
+<%- include('partials/head.ejs') %>
+    <body>
+        <%- include('partials/header.ejs') %>
+
+        <%- include('partials/navbar.ejs') %>
+            <main>
+                <h3 class="título">PANEL DE ADMINISTRADOR</h3>
+
+                <section>
+                    <ul class="titulin">
+
+                        <li><a href="/users">Usuarios</a></li>
+                        <br>
+                        <li><a href="/products">Productos</a></li>
+
+                    </ul> 
+                </section>
+            </main>
+
+            <%- include('partials/footer.ejs') %>
+    </body>
+</html>

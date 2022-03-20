@@ -162,14 +162,13 @@ form {
     text-align: center;
     margin: 5px 0 5px 0;
 }
-.inputCorrecto {
+.input {
     width: 100%;
-    height: 20px;
+    height: 30px;
     justify-content: center;
     text-align: center;
     padding-bottom: 50px;
     position: relative;
-    border-color: green;
     visibility: visible;
 }
 .inputIncorrecto {

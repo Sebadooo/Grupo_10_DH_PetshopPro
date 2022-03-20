@@ -20,15 +20,28 @@ router.post('/userLogin', valLogin, userController.processLogin);
 
 //REGISTRO//
 router.get('/userRegister', userController.register);
-router.post('/userRegister', valReg, upLoadFile.single('avatar'), userController.saveRegister);
+router.post('/userRegister', upLoadFile.single('avatar'), userController.saveRegister);
 
 //CARRITO DE COMPRAS//
 router.get('/shopCart', userController.shopCart);
 //router.post('/shopCart', userController.completeShop);
 
+//(C) CREAR NUEVO USUARIO//
+router.get("/userCreate", userController.createUser);
+router.post("/userCreate", userController.saveUser);
+
+//(R) LISTADO DE USUARIOS//
+router.get("/users", userController.showUsers);
+
+//DETALLE DEL USUARIO//
+router.get("/userDetail", userController.userDetail);
+
+//(U) EDICION DE USUARIOS//
+router.get("/userEdit/:id", userController.editUser);
+//router.post("/:idUser/userUpdate", userController.updateUser);
+
 //RUTAS SEQUELIZE//
 router.get("/userRegister", valReg, userController.createUser);
-router.post("/crear", userController.saveUser);
 
 
 module.exports = router;

@@ -9,7 +9,7 @@
             <%- include('partials/navbar.ejs') %>
 
                 <main>
-                    <h3 class="título">REGISTRATE</h3>
+                    <h3 class="título">CREAR USUARIO</h3>
                     <div class="errorsFront">
                        <ul>
 
@@ -17,7 +17,10 @@
                     </div>
                     <section class="formularios">
                     
-                        <form class="registro" action="/userRegister" method="POST" enctype="multipart/form-data">
+                        <div class="bannersLat">
+                            <img src="/images/otros/Banner_Perro_Izq.jpg" />
+                          </div>
+                        <form class="registro" action="/userCreate" method="POST" enctype="multipart/form-data">
 
                             <!-- < % if (locals.errors) { %>
                                 < % for (let oneError in errors) { %>
@@ -29,7 +32,7 @@
                             <p class="etiquetas1">  
                                 <label for="nombre">Nombre: </label>
                             </p>
-                            <p class="inputCorrecto">
+                            <p class="input">
                                 <input type="text" name="first_name" class="first_name" required>
                                 <i class="fas fa-check-circle"></i>
                             </p>
@@ -43,19 +46,12 @@
                                                 <div class="text-danger">
                                                     < %= errors.first_name.msg %>
                                                     < % } %> -->
-                                                    <p class="etiquetas1">
-                                                        <label for="nombre">Tu nombre: </label>
-                                                    </p>
-                                                    <p class="inputIncorrecto">
-                                                        <input type="text" name="first_name" class="first_name" required>
-                                                        <i class="fas fa-exclamation-circle"></i>
-                                                        <small>error mesage</small>
-                                                    </p>
-                                                </div>
+                                                    
+                                                
                             <p class="etiquetas1">
                                 <label for="apellido">Apellido: </label>
                             </p>
-                            <p class="inputIncorrecto">
+                            <p class="input">
                                 <input type="text" name="last_name" class="last_name" required>
                                 <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i>
@@ -68,12 +64,9 @@
                             <p class="etiquetas1">
                                 <label for="email">E-mail: </label>
                             </p>
-                            <p class="inputIncorrecto">
+                            <p class="input">
                                 <input type="email" name="email" class="email" required>
-                                <i class="fas fa-check-circle"></i>
-                                <i class="fas fa-exclamation-circle"></i>
-                                <small>error mesage</small>
-                            </p>
+                                                            </p>
                             <!-- < % if (locals.errors && errors.email) { %>
                                                         <div class="text-danger">
                                                             < %= errors.email.msg %>
@@ -81,7 +74,7 @@
                             <p class="etiquetas1">
                                 <label for="clave">Contraseña: </label>
                             </p>
-                            <p class="inputCorrecto ">
+                            <p class="input">
                                 <input type="password" name="password" class="password" required>
                                 <i class="fas fa-check-circle"></i>
                                 <i class="fas fa-exclamation-circle"></i>
@@ -94,14 +87,21 @@
                             <!-- <p class="etiquetas1">
                             <label for="clave">Confirma la contraseña: </label>
                         </p> -->
-                            <!-- <p class="inputs1">
-                            <input type="password" name="password">
-                        </p> -->
+                           <p class="etiquetas1">
+                            <label for=""> Categoria: </label>  
+                            <select name="category">
+                                <% for (let i = 0 ; i < userCat.length ; i++) { %>
+                                <option class="input" value="<%=userCat[i].id%>">
+                                    <%=userCat[i].description%>
+                                </option>
+                                <% } %>
+                            </p>
+                            <br>
                             <p class="etiquetas1">
-                                <label for="avatar">Foto de perfil: </label>
+                                <label for="avatar">Avatar: </label>
                             </p>
                             <p class="botonFile">    
-                                <input type="file" id="avatar" name="avatar" accept=".jpg" multiple>
+                                <input type="file" id="avatar" name="avatar" accept=".jpg,.jpeg,.png,.gif" multiple>
                             </p>
                             <!-- < % if (locals.errors && errors.avatar) { %>
                                                         <div class="text-danger">
@@ -111,7 +111,10 @@
                                 <button type="submit">CREAR</button>
                             </p>
                         </form>
-                        
+                    </div>
+                        <div class="bannersLat">
+                            <img src="images/otros/Banner_Gato_Der.jpg" />
+                          </div>
                     </section>
                     <script src="/javascript/registerVal.js" type="text/javascript"></script>
                 </main>

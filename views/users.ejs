@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/header.ejs') %>
+
+            <%- include('partials/navbar.ejs') %>
+                <main>
+                    <h3 class="título">Listado de usuarios</h3>
+                    <div class="productoPerros">
+                    <ul >
+                    <% for (let i=0; i < users.length; i++){ %>
+                    <li>
+                        <a href="userDetail"> 
+                        <%= users[i].first_name + " " + users[i].last_name + " " + users[i].user_category_id%>
+                        </a>
+                    </li>
+                    <% } %>
+                    </ul>
+                        <!-- <section class="productoPerros">
+
+
+                                <figure class="box_image">
+                                </figure>
+                                <article class="box_data">
+                                    <img src="/img/avatars/< %=Users[i].avatar %>" alt="" width="200" height="150">
+                                    <br>
+                                    <p>NOMBRE: < %=Users[i].first_name%>
+                                    </p>
+                                    <br>
+                                    <p>APELLIDO: < %=Users[i].last_name %>
+                                    </p>
+                                    <br>
+                                    <p>EMAIL: < %=Users[i].email%>
+                                    </p>
+                                    <br>
+                                    <a href="./userDetail/< %= Users[i].id %>">VER DETALLE DE ESTE USUARIO
+                                    </a>
+                                </article>
+                                </a>
+                                <br>
+                        </section>
+                        < % } %> -->
+
+                            </div>
+
+                            </section>
+                            <div>
+                                <a href='userCreate' class="boton1">CREAR NUEVO USUARIO</a>
+                            </div>                
+                        
+                        </main>
+
+                <%- include('partials/footer.ejs') %>
+    </body>
+
+</html>
