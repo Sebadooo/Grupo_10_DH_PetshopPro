@@ -9,7 +9,7 @@
             <%- include('partials/navbar.ejs') %>
 
                 <main>
-                    <h3 class="título">REGISTRATE</h3>
+                    <h3 class="título">EDITAR USUARIO</h3>
                     <div class="errorsFront">
                        <ul>
 
@@ -17,7 +17,7 @@
                     </div>
                     <section class="formularios">
                     
-                        <form class="edicion" action=":idUser/userEdit?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <form class="edicion" action="userEdit/user_id/?_method=PUT" method="POST" enctype="multipart/form-data">
 
                             <!-- < % if (locals.errors) { %>
                                 < % for (let oneError in errors) { %>

@@ -6,29 +6,19 @@
 
         <%- include('partials/navbar.ejs') %>
             <main>
+                <div class="productoPerros">
                 <h3 class="título">PRODUCTOS</h3>
-
-                 <!-- < % products.forEach(products => { %> -->
-                    <section class="productoPerros">
-
-                        <!-- <div class="produ">
-                            <a href="/products/productDetail/< %=productsDataBase.id%>">
-                                <div>img src="/images/
-                                    < %=productsDataBase.image%>" alt="pedigree"></div>
-                                <h2>
-                                    < %=productsDataBase.name%>
-                                </h2>
-                                <p>
-                                    < %= productsDataBase.price%>
-                                </p>
-                                <div>Descuento del
-                                    < %=productsDataBase.discount%>
-                                </div>
-                            </a>
-                        </div> -->
-
-                    </section>
-                    <!-- < %}) %> -->
+                <ul>
+                <% for (let i = 0; i < productos.length; i++){ %>
+                    <li>
+                        <a href="productDetail"> 
+                        <%= productos[i].product_name%>
+                        </a>
+                    </li>
+                    <% } %>
+                    </ul>
+                </div>
+                    
             </main>
 
             <%- include('partials/footer.ejs') %>

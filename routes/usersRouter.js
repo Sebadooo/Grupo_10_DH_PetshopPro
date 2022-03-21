@@ -32,14 +32,14 @@ router.post("/userCreate", userController.saveUser);
 
 //(R) LISTADO DE USUARIOS//
 router.get("/users", userController.showUsers);
-
-//DETALLE DEL USUARIO//
-router.get("/userDetail", userController.userDetail);
+// DETALLE DEL USUARIO//
+router.get("/userDetail/:user_id", userController.userDetail);
 
 //(U) EDICION DE USUARIOS//
 router.get("/userEdit/:id", userController.editUser);
 //router.post("/:idUser/userUpdate", userController.updateUser);
 
+//(D) ELIMINAR USUARIO//
 //RUTAS SEQUELIZE//
 router.get("/userRegister", valReg, userController.createUser);
 

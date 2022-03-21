@@ -8,18 +8,18 @@ module.exports = (sequelize, DataTypes) => {
             autoincremental: true
         },
         first_name: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING(100),
+            allowNull: true
         },
         last_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(100),
             allowNull: false
         },
         email: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(100),
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(200),
             allowNull: false
         },
         user_category_id: {
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: true
         },
         image: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(100),
         },
     };
 
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define(alias, cols, config);
 
     User.associate = function (models) {
-        User.hasMany(models.user_category,{
+        User.belongsTo(models.user_category,{
             as: "user_cat",
             foreignKey: "user_category_id"    
         })

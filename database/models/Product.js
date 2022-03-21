@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false  
         },
         uom_code: {
             type: DataTypes.STRING,
@@ -48,7 +47,9 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     var config = {
-        timestamps: false
+        tableName: "products",
+        timestamps: false,
+        underscored: true
     };
 
     const Product = sequelize.define(alias, cols, config);

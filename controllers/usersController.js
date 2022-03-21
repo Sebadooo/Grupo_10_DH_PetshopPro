@@ -20,7 +20,7 @@ const usersController = {
   },
   //MUESTRA EL DETALLE DEL USUARIO SELECCIONADO//
   userDetail: (req, res) => {
-    db.Users.findByPk(req.params.id, {
+    db.Users.findByPk(req.params.user_id, {
       include: [{ association: "user_cat" }],
     })
       .then(function (User) {
@@ -91,16 +91,15 @@ const usersController = {
     //          })
     //      };
 
-    let usuarioNuevo = {
-      ...req.body,
-      //password: bcryptjs.hashSync(req.body.password, 10),
-      //avatar: reqbody..file.fileName
-    };
-    console.log("usuario nuevo", usuarioNuevo);
-    let usuarioCreado = Users.create(usuarioNuevo);
-    console.log("usuario nuevo", usuarioCreado);
-
-    res.redirect("./views/userLogin.ejs");
+    db.Users.create({
+        firt_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password: req.body.password,
+        image: req.body.avatar,
+      });
+      console.log(req.body)
+      res.redirect("/");
   },
 
   //MUESTRA EL FORMULARIO DE LOGIN O INICIAR SESION//

@@ -1,14 +1,16 @@
 const fs = require('fs');
 const path = require('path');
-const db = require ('../database/models/index');
+const db = require ('../database/models');
+const { validationResult } = require("express-validator");
+const multer = require("multer");
 
 const productController = {
 //MUESTRA TODOS LOS PRODUCTOS
     showAll: (req, res) => {
-        db.Product.findAll({ 
+        db.Products.findAll({ 
             include: [{association: "products_cat"}]})
-        .then (function(products){
-            res.render('products', {products:products}); 
+        .then (function(productos){
+            res.render('products', {productos:productos}); 
         })
         .catch (function(err){  
 console.log(err)        
@@ -16,7 +18,7 @@ console.log(err)
     },
 //MUESTRA EL DETALLE DE UN PRODUCTO//
 showDetail: (req, res) => {
-    db.product.findByPk(req.params.id,{
+    db.products.findByPk(req.params.id,{
         include: [{association: "products_cat"}]})
         .then (function(producto){
             res.render('productDetail', {producto:producto})

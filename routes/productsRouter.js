@@ -5,7 +5,7 @@ const productController = require('../controllers/productsController');
 
 //PÚBLICO//
 /* GET ALL PRODUCTS (GET)*/
-router.get('/products/all', productController.showAll);
+router.get('/products', productController.showAll);
 
 /* PRODUCT DETAIL (GET)*/
 //router.get('/detail/:id/', productController.showDetail);
