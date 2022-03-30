@@ -27,7 +27,7 @@ const usersController = {
         res.render("userDetail", { User:User });
       })
       .catch(function (err) {
-        console.log(err);
+        console.log(err); 
       });
   },
   //CREAR NUEVO USUARIO (ADMIN)//
@@ -42,27 +42,54 @@ const usersController = {
   },
   //GUARDADO DEL NUEVO USUARIO CREADO//
   saveUser: (req, res) => {
+    console.log("ESTO ES EL REQ BODY", req.body)
     db.Users.create({
-      firt_name: req.body.first_name,
+      first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password,
-      user_category_id: req.body.category,
+      //user_category_id: 1,
       image: req.body.avatar,
-    });
-    res.redirect("/");
+    })
+    res.redirect("/"),{msg: "Usuario creado con éxito!"};
   },
   //EDITAR USUARIO//
   editUser: (req, res) => {
-      let idUser = req.params.idUser;
-    res.send(idUser);
-     // db.Users.update({ })
+      let usuarios = db.Users.findByPk(req.params.user_id);
+      
+      let categorias = db.user_category.findAll();
+
+      Promise.all([usuarios, categorias])
+      .then(([userToEdit, category])=> {
+          res.render('userEdit', {userToEdit:userToEdit, category:category});
+      })
+      // db.Users.update({ })
    },
   //GUARDAR LOS CAMBIOS//
-  // update: (req, res) => {
-  //},
-  //ELIMINA UN USUAIO
-
+  updateUser: (req, res) => {
+    db.Users.update({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password: req.body.password,
+        user_category_id: req.body.category,
+        image: "/publics/images/avatars" + req.file.filename,
+      },{
+          where: {
+              id: req.params.user_id
+          }
+        });
+      res.redirect("/userDetail/"+ req.params.user_id);
+  },
+  //ELIMINA UN USUARIO//
+  deleteUser: (req, res) => {
+      db.Users.destroy({
+          where: {
+              user_id: req.params.user_id
+          } 
+      })
+        res.redirect("/users");
+  },
   //MUESTRA EL FORMULARIO DE REGISTRO//
   register: (req, res) => {
     res.cookie("Tested", { maxAge: 1000 * 120 });
@@ -78,7 +105,7 @@ const usersController = {
     //          oldData: req.body
     //        }
     //      }
-    //    let usuarioExistente = User.findByField ("email")
+    //    let usuarioExistente = db.Users.findByField ("email")
 
     //    if (usuarioExistente == req.body.email) {
     //          return res.render('userRegister', {
@@ -92,15 +119,20 @@ const usersController = {
     //      };
 
     db.Users.create({
-        firt_name: req.body.first_name,
+        first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
         password: req.body.password,
-        image: req.body.avatar,
-      });
-      console.log(req.body)
-      res.redirect("/");
-  },
+        user_category_id: 2,
+        image: "/publics/images/avatars" + req.file.filename,
+      })
+      console.log("esto es el body", req.body)
+      res.redirect("userLogin")
+    
+      .catch((err) => {
+        console.log(err)
+      })      
+    },
 
   //MUESTRA EL FORMULARIO DE LOGIN O INICIAR SESION//
   login: (req, res) => {
@@ -109,55 +141,39 @@ const usersController = {
   //PRECESA EL LOGIN//
   processLogin: (req, res) => {
     //Manejo de cookies
-    if (req.body.remember) {
-      req.session.cookie.maxAge = 1000 * 60 * 24;
-      res.cookie("amarillo", "Bienvenido usuario!");
-    } else {
-      req.session.cookie.expires = false;
-    }
+    // if (req.body.remember) {
+    //   req.session.cookie.maxAge = 1000 * 60 * 24;
+    //   res.cookie("amarillo", "Bienvenido usuario!");
+    // } else {
+    //   req.session.cookie.expires = false;
+    // }
     db.Users.findOne({ where: { email: req.body.email } })
-      .then((Users) => {
-        if (Users && bcryptjs.compareSync(req.body.password, User.password)) {
-          delete User.password;
-          console.log("users", Users);
-          req.session.userLogged = Users;
+     //let userInDb = db.Users for(let i = 0 ; i < db.Users.length ; i++); 
+    .then((User) => {
+        if (User.email == req.body.email && bcryptjs.compareSync(req.body.password == User.password)) {
+          console.log("users", User);
           console.log("logged", req.session.userLogged);
-          res.redirect("/", { Users: Users });
+          res.redirect("/", { Users: User });
         } else {
+          delete User.password;
           res.render("userLogin");
         }
+        //req.session.userLogged = User;
       })
       .catch((e) => console.log(e));
   },
-  /*processLogin: (req, res) => {
-        let errors = validationResult(req);
+        //   if (usuarioALoguearse == undefined) {
+        //     return res.render ('userLogin', {errors: [
+        //         {msg: "Credenciales invalidas"}
+        //         ]});
+        //     };
 
-        if (errors.isEmpty()) {
-            let usersJSON = fs.readFileSync('usersDataBase.json',{usersDataPath:'utf-8'});
-            let users;
-            if (usersJSON == "") {
-                users = [];
-            } else {
-                users = JSON.parse(usersJSON);
-            for (let i = 0; i < user.length; i++) {
-                if (users[i].email == req.body.email){
-                    if (bcrypt.compareSync(req.body.password, users[i].password))
-                    var usuarioALoguearse = users[i];
-                    break;
-                }
-            }
-        }
-        if (usuarioALoguearse == undefined) {
-            return res.render ('userLogin', {errors: [
-                {msg: "Credenciales invalidas"}
-                ]});
-            }
 
-            req.session.usuarioLogueado = usuarioALoguearse;
-            res.redirect ("Login exitoso!");
-        } else {
-            return res.render ('userLogin', {errors: errors.errors})
-        }*/
+        //     req.session.userLogged = userToLog;
+        //     res.redirect ("Login exitoso!");
+        // } else {
+        //     return res.render ('userLogin', {errors: errors.errors})
+        // },
   // CERRANDO SESION//
   logout: (req, res) => {
     req.session.destroy();

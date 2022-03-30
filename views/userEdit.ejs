@@ -17,7 +17,7 @@
                     </div>
                     <section class="formularios">
                     
-                        <form class="edicion" action="userEdit/user_id/?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <form class="edicion" action="userEdit/<%userToEdit.id%>" method="POST" enctype="multipart/form-data">
 
                             <!-- < % if (locals.errors) { %>
                                 < % for (let oneError in errors) { %>
@@ -30,7 +30,7 @@
                                 <label for="nombre">Nombre: </label>
                             </p>
                             <p class="input">
-                                <input type="text" name="first_name" class="first_name" required>
+                                <input type="text" name="first_name" value="<%=userToEdit.first_name%>" class="first_name">
                             </p>
                         
                             <!-- < % if(locals.errors && errors.first_name) { %>
@@ -47,8 +47,8 @@
                             <p class="etiquetas1">
                                 <label for="apellido">Apellido: </label>
                             </p>
-                            <p class="inputIncorrecto">
-                                <input type="text" name="last_name" class="last_name" required>
+                            <p class="input">
+                                <input type="text" name="last_name" value="<%=userToEdit.last_name%>" class="last_name">
                                 
                             </p>
                             <!-- < % if (locals.errors && errors.last_name) { %>
@@ -58,8 +58,8 @@
                             <p class="etiquetas1">
                                 <label for="email">E-mail: </label>
                             </p>
-                            <p class="inputIncorrecto">
-                                <input type="email" name="email" class="email" required>
+                            <p class="input">
+                                <input type="email" name="email" value="<%=userToEdit.email%>" class="email">
                                 
                             </p>
                             <!-- < % if (locals.errors && errors.email) { %>
@@ -67,27 +67,39 @@
                                                             < %= errors.email.msg %>
                                                             < % } %> -->
                             <p class="etiquetas1">
-                                <label for="clave">Contraseña: </label>
+                                <label for="clave">Nueva Contraseña: </label>
                             </p>
-                            <p class="inputCorrecto ">
-                                <input type="password" name="password" class="password" required>
+                            <p class="input">
+                                <input type="password" name="password" class="password">
                                 
                             </p>
                             <!-- < % if (locals.errors && errors.password %>
                                                         <div class="text-danger">
                                                             < %= errors.passwordmsg %>
                                                             < % } %> -->
-                            <!-- <p class="etiquetas1">
-                            <label for="clave">Confirma la contraseña: </label>
-                        </p> -->
-                            <!-- <p class="inputs1">
-                            <input type="password" name="password">
-                        </p> -->
+                            <p class="etiquetas1">
+                                <label for=""> Categoria: </label>  
+                                <select class="input" name="category">
+                                    <% for (let i = 0 ; i < category.length ; i++) { %>
+                                        <% if (category[i].user_id == userToEdit.user_category_id){%>
+
+                                            <option value="<%=category[i].user_id%>" selected>
+                                                <%=category.description%>
+                                            </option>
+                                        <% } else { %>
+                                            <option value="<%=category[i].user_id%>">
+
+                                            <%=category.description%>
+                                            </option>
+                                        <% } %>
+                                    <% } %>
+                                </p>
+                            
                             <p class="etiquetas1">
                                 <label for="avatar">Foto de perfil: </label>
                             </p>
                             <p class="botonFile">    
-                                <input type="file" id="avatar" name="avatar" accept=".jpg" multiple>
+                                <input type="file" id="avatar" name="avatar" value="<%=userToEdit.avatar%>" accept=".jpg,.jpeg,.png,.gif">
                             </p>
                             <!-- < % if (locals.errors && errors.avatar) { %>
                                                         <div class="text-danger">

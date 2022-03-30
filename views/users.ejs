@@ -9,7 +9,7 @@
                 <main>
                     <h3 class="título">Listado de usuarios</h3>
                     <div class="productoPerros">
-                    <ul >
+                    <ul>
                     <% for (let i=0; i < users.length; i++){ %>
                     <li>
                         <a href="/userDetail/<%=users[i].user_id %>"> 
@@ -18,35 +18,10 @@
                     </li>
                     <% } %>
                     </ul>
-                        <!-- <section class="productoPerros">
-
-
-                                <figure class="box_image">
-                                </figure>
-                                <article class="box_data">
-                                    <img src="/img/avatars/< %=Users[i].avatar %>" alt="" width="200" height="150">
-                                    <br>
-                                    <p>NOMBRE: < %=Users[i].first_name%>
-                                    </p>
-                                    <br>
-                                    <p>APELLIDO: < %=Users[i].last_name %>
-                                    </p>
-                                    <br>
-                                    <p>EMAIL: < %=Users[i].email%>
-                                    </p>
-                                    <br>
-                                    <a href="./userDetail/< %= Users[i].id %>">VER DETALLE DE ESTE USUARIO
-                                    </a>
-                                </article>
-                                </a>
-                                <br>
-                        </section>
-                        < % } %> -->
-
+                        
                             </div>
 
-                            </section>
-                            <div>
+                                                        <div>
                                 <a href='userCreate' class="boton1">CREAR NUEVO USUARIO</a>
                             </div>                
                         

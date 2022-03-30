@@ -36,12 +36,11 @@ router.get("/users", userController.showUsers);
 router.get("/userDetail/:user_id", userController.userDetail);
 
 //(U) EDICION DE USUARIOS//
-router.get("/userEdit/:id", userController.editUser);
-//router.post("/:idUser/userUpdate", userController.updateUser);
+router.get("/userEdit/:user_id", userController.editUser);
+router.post("/userEdit/:user_id", userController.updateUser);
 
 //(D) ELIMINAR USUARIO//
-//RUTAS SEQUELIZE//
-router.get("/userRegister", valReg, userController.createUser);
+router.post("/userDelete/:user_id", userController.deleteUser)
 
 
 module.exports = router;

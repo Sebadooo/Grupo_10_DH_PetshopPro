@@ -8,66 +8,32 @@
         <%- include('partials/navbar.ejs') %>
 
             <main>
+<section class="productDetCard">
+                <div class="">
+                    <h3><%=producto.product_name%> </h3>
+                </div>
+                <div>
+                    <img src="<%=producto.image %>" alt="" width="200" height="150">
+                    <br> 
+                    <br>
+                    <p class=""> <%=producto.description%></p>
+                    <br>
+                    <h3 class="">CATEGORIA:  <%=producto.products_cat.category_name%></h3>
+                    <br>
+                </div>
+            </section>
+                <div>                    
+                                    <a href="/productEdit/<%=producto.product_id%>" class="action-button edit">
+                                    <button>EDITAR</button>    
+                                    </a>
 
-                <!-- product detail -->
-                <div class="container products-wrapper">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="products-title">Detalle del producto: NOMBRE DEL PRODUCTO</h2>
-                        </div>
-                    </div>
-                    <div class="product-detail">
-                        <div class="row">
-                            <div class="col-12 col-lg-8">
-                                <img src="/images/products/¿?" alt="product image" class="product-detail-img">
-                                <p class="product-detail-description">
-                                    PRODUCT DESCRIPTION
-                                </p>
-                            </div>
-                            <div class="col-12 col-lg-4">
-                                <article class="product-detail-info">
-                                    <h2 class="product-detail-title">PRODUCT NAME</h2>
-
-                                    <p class="product-detail-price small">
-                                        <span>$PRICE</span> /
-                                        <b>DISCOUNT% OFF</b>
-                                    </p>
-                                    <p class="product-detail-price">
-                                        $FINAL PRICE
-                                    </p>
-                                    <p class="product-detail-price">
-                                        $PRICE
-                                    </p>
-
-                                    <ul class="actions-list">
-                                        <li>
-                                            <i class="fas fa-credit-card"></i>
-                                            <p>Pagá en 12 cuotas sin interes</p>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-store"></i>
-                                            <p>Retiro gratis en locales del vendedor</p>
-                                        </li>
-                                    </ul>
-
-                                    <a href="#" class="buy-now-button">COMPRAR AHORA</a>
-                                    <hr>
-
-                                    <a href="/products/edit/<%= products.id%>" class="action-button edit">EDITAR PRODUCTO</a>
-
-                                    <form action="/products/edit/<%= products.id%>?_method=PUT" method="POST" style="display: inline-flex">
-                                        <button type="submit" class="action-button edit">EDITAR</button>
-                                    </form>
-                                    <form action="/products/delete/<%= products.id%>?_method=delete" method="POST" style="display: inline-flex">
+                                <!-- //?_method=delete -->
+                                    <form action="/productDelete/<%=producto.product_id%>" method="POST" style="display: inline-flex">
                                         <button type="submit" class="action-button delete">ELIMINAR</button>
                                     </form>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
+                                
                 </div>
-                <!-- /product detail -->
-
+                
             </main>
             <%- include('partials/footer.ejs') %>
     </body>

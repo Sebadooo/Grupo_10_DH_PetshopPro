@@ -88,20 +88,23 @@
                             <label for="clave">Confirma la contraseña: </label>
                         </p> -->
                            <p class="etiquetas1">
-                            <label for=""> Categoria: </label>  
+                            <label for=""> CATEGORÍA </label>
+                           </p>
+                           <p class="input">  
                             <select name="category">
                                 <% for (let i = 0 ; i < userCat.length ; i++) { %>
-                                <option class="input" value="<%=userCat[i].id%>">
-                                    <%=userCat[i].description%>
+                                <option value="<%=userCat[i].id%>">
+                                    <%=userCat[i].user_category_id%>
                                 </option>
                                 <% } %>
+                            </select>  
                             </p>
                             <br>
                             <p class="etiquetas1">
                                 <label for="avatar">Avatar: </label>
                             </p>
                             <p class="botonFile">    
-                                <input type="file" id="avatar" name="avatar" accept=".jpg,.jpeg,.png,.gif" multiple>
+                                <input type="file" id="avatar" name="avatar" accept=".jpg,.jpeg,.png,.gif">
                             </p>
                             <!-- < % if (locals.errors && errors.avatar) { %>
                                                         <div class="text-danger">

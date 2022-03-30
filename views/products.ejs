@@ -6,19 +6,21 @@
 
         <%- include('partials/navbar.ejs') %>
             <main>
-                <div class="productoPerros">
                 <h3 class="título">PRODUCTOS</h3>
+                <div class="productoPerros">
                 <ul>
                 <% for (let i = 0; i < productos.length; i++){ %>
                     <li>
-                        <a href="productDetail"> 
+                        <a href="productDetail/<%= productos[i].product_id%>"> 
                         <%= productos[i].product_name%>
                         </a>
                     </li>
                     <% } %>
                     </ul>
                 </div>
-                    
+                <div>
+                    <a href='productCreate' class="boton1">CREAR NUEVO PRODUCTO</a>
+                </div>  
             </main>
 
             <%- include('partials/footer.ejs') %>

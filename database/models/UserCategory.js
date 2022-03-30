@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     const UserCategory = sequelize.define(alias, cols, config);
 
      UserCategory.associate = function (models) {
-          UserCategory.belongsTo(models.Users,{
+          UserCategory.hasMany(models.Users,{
               as: "users",
               foreignKey: "user_category_id"    
           })

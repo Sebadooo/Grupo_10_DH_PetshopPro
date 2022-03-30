@@ -2,7 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const db = require ('../database/models');
 const { validationResult } = require("express-validator");
-const multer = require("multer");
+const multer = require ("multer");
+const upLoadFile = require ('../middlewares/productMulterMiddleware');
+
 
 const productController = {
 //MUESTRA TODOS LOS PRODUCTOS
@@ -18,7 +20,7 @@ console.log(err)
     },
 //MUESTRA EL DETALLE DE UN PRODUCTO//
 showDetail: (req, res) => {
-    db.products.findByPk(req.params.id,{
+    db.Products.findByPk(req.params.product_id,{
         include: [{association: "products_cat"}]})
         .then (function(producto){
             res.render('productDetail', {producto:producto})
@@ -29,12 +31,14 @@ showDetail: (req, res) => {
     )
 },
 //CREA UN PRODUCTO//
-create: (req, res) => {
-    db.Products.findAll()
-        .then (function(product_category) {
-            return res.render('products', {product_category:product_category});
-        });
-    res.render("createProduct", {detail:detail})
+createProduct: (req, res) => {
+    db.Product_Category.findAll()
+        .then (function (products_cat) {
+            return res.render('productCreate', {products_cat:products_cat});
+        })    
+    .catch(function (e) {
+                console.log(e);
+              });
 },
 //GUARDA EL PRODUCTO CREADO//
 saveNewProduct: (req, res) => {
@@ -42,8 +46,10 @@ saveNewProduct: (req, res) => {
         product_name: req.body.name,
         description: req.body.description,
         product_category_id: req.body.category,
+        image: req.file.filename,
         price: req.body.price
     })
+    console.log("DETALLES DE IMAGEN", req.file)
     res.redirect('/products')
 },
 //MODIFICA UN PRODUCTO//

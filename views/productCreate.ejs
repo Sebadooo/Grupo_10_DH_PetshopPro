@@ -9,50 +9,59 @@
 
                 <main>
                     <section class="formularios">
-                        <form action="/createProd" method="POST">
+
+                        <div class="bannersLat">
+                            <img src="/images/otros/Banner_Perro_Izq.jpg" />
+                          </div>
+                        <form action="/productCreate" method="POST" enctype="multipart/form-data">
 
                             <p class="etiquetas1">
                                 <label for="product" class="form-label">NOMBRE DEL PRODUCTO </label>
                             </p>
-                            <p class="inputs1">
-                                <input type="text" name="name" placeholder="Ingresa nombre acá"
+                            <p class="input">
+                                <input type="text" name="name" placeholder="NOMBRE DEL PRODUCTO"
                                     class="form-input">
                             </p>
                             <p class="etiquetas1">
                                 <label for="description" class="form-label">DESCRIPCIÓN </label>
-                            <p class="inputs1">
-                                <textarea name="description" class="form-input"></textarea>
+                            <p class="input">
+                                <textarea name="description" placeholder="NO TE ZARPES, HASTA 100 CARACTERES"></textarea>
                             </p>
-                            </p>
-                            <p class="etiquetas1">
+                                                    <p class="etiquetas1">
                                 <label for="category" class="form-label">CATEGORÍA </label>
                             </p>
-                            <p class="inputs1">
+                            <p class="input">
                                 <select name="category">
-                                    <% for (let i=0; i < product_category.length; i++) { %>
-                                        <option value="<%=product_category[i].id%>">
-                                            <%= product_category[i].name %>
+                                    <% for (let i=0; i < products_cat.length; i++) { %>
+                                        <option value="<%=products_cat[i].id%>">
+                                            <%= products_cat[i].category_name %>
                                         </option>
                                         <% } %>
                                 </select>
                             </p>
-                            <p>
-                                <label>SELECCIONA LA IMAGEN DEL PRODUCTO </label>
-                                <input type="file" name="prodImage" accept=".jpg" multiple>
+                            <p class="etiquetas1">
+                                <label>IMAGEN DEL PRODUCTO </label>
+                            </p>
+                            <p class="botonFile">
+                                <input type="file" name="prodImage" accept=".jpg,.jpeg,.png,.gif" multiple>
 
                             </p>
-                            <label for="price" class="form-label">PRECIO EN $ </label>
+                            <p class="etiquetas1">
+                            <label for="price">PRECIO EN $ </label>
                             </p>
-                            <p class="inputs1">
+                            <p class="input">
                                 <input type="number" name="price" placeholder="$???" class="form-input">
                             </p>
 
                             </select>
 
                             <p class="boton1">
-                                <button type="submit">CREAR!</button>
+                                <button type="submit">CREAR</button>
                             </p>
                         </form>
+                        <div class="bannersLat">
+                            <img src="images/otros/Banner_Gato_Der.jpg" />
+                          </div>
                     </section>
                 </main>
                 <%- include('partials/footer.ejs') %>

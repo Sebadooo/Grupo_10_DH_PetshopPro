@@ -9,30 +9,30 @@
 
             <main>
                 <div class="">
-                    <h3>NOMBRE :<%=User.first_name%> </h3>
+                    <h3>NOMBRE:  <%=User.first_name%> </h3>
                 </div>
                 <div>
                     <br>
-                    <h3 class="">APELLIDO: <%=User.last_name%> </h3>
+                    <h3 class="">APELLIDO:  <%=User.last_name%> </h3>
                     <br>
+                    <img src="<%=User.image %>" alt="" width="200" height="300">
+                    <br> 
                     <h3 class="">EMAIL: <%=User.email%></h3>
                     <br>
-                    <h3 class="">CATEGORIA: <%=User.userCat%></h3>
+                    <h3 class="">CATEGORIA: <%=User.user_cat.description%></h3>
                     <br>
-                    <img src="/images/avatars/<%=User.avatar %>" alt="" width="200" height="150">
-                    <br> 
                 </div>
 
                 <div>                    
-                                    <a href="/userEdit/<%= User.id%>" class="action-button edit">EDITAR USUARIO</a>
+                                    <a href="/userEdit/<%=User.user_id%>" class="action-button edit">
+                                    <button>EDITAR</button>    
+                                    </a>
 
-                                    <form action="/userEdit/<%= User.id%>?_method=PUT" method="POST" style="display: inline-flex">
-                                        <button type="submit" class="action-button edit">EDITAR</button>
-                                    </form>
-                                    <form action="/userDelete/<%= User.id%>?_method=delete" method="POST" style="display: inline-flex">
+                                <!-- //?_method=delete -->
+                                    <form action="/userDelete/<%=User.user_id%>" method="POST" style="display: inline-flex">
                                         <button type="submit" class="action-button delete">ELIMINAR</button>
                                     </form>
-                                </article>
+                                
                 </div>
                 
             </main>
