@@ -1,10 +1,8 @@
-function guestMiddleware (req, res, next) {
-if (req.session.usuarioLogueado == undefined) {
-    next();
-} else {
-    res.send ("Solo personal autorizado...");
-    }
+const guestMiddleware = (req, res, next) => {
+  if (req.session.userLogged) {
+    res.redirect("../userProfile/");
+  }
+  next();
 };
-
 
 module.exports = guestMiddleware;

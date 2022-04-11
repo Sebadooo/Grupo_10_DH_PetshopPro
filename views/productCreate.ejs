@@ -11,7 +11,7 @@
                     <section class="formularios">
 
                         <div class="bannersLat">
-                            <img src="/images/otros/Banner_Perro_Izq.jpg" />
+                            <img class="bannerLat" src="/images/otros/Banner_Perro_Izq.jpg" />
                           </div>
                         <form action="/productCreate" method="POST" enctype="multipart/form-data">
 
@@ -31,9 +31,10 @@
                                 <label for="category" class="form-label">CATEGORÍA </label>
                             </p>
                             <p class="input">
-                                <select name="category">
+                                <select name="products_cat">
+                                   <option value="0">categoría </option>
                                     <% for (let i=0; i < products_cat.length; i++) { %>
-                                        <option value="<%=products_cat[i].id%>">
+                                        <option value="<%=products_cat[i].product_category_id%>">
                                             <%= products_cat[i].category_name %>
                                         </option>
                                         <% } %>
@@ -60,7 +61,7 @@
                             </p>
                         </form>
                         <div class="bannersLat">
-                            <img src="images/otros/Banner_Gato_Der.jpg" />
+                            <img class="bannerLat" src="/images/otros/Banner_Gato_Der.jpg" />
                           </div>
                     </section>
                 </main>

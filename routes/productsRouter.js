@@ -1,50 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const fs = require ('fs');
-const path = require ('path');
-const multer = require ("multer");
+const upLoadFile = require('../middlewares/productMulterMiddleware');
 const prodCreVal = require ('../middlewares/productValMiddleware') 
 const productController = require('../controllers/productsController');
 
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        let folder = path.join(__dirname,'../publics/images/products')
-        cb(null, folder);
-    },
-    filename: (req, file, cb) => {
-        let imageName = file.fieldname + " " + Date.now() + path.extname(file.originalname)
-        cb(null, imageName);
-    }
-})
 
-const upLoadFile = multer ({ storage });
+//********(C) CREAR NUEVO PRODUCTO********//
+router.get('/productCreate', productController.createProduct);
+router.post('/productCreate', upLoadFile.single('prodImage'), prodCreVal, productController.saveNewProduct);
 
-//const upLoadFile = require ('../middlewares/productMulterMiddleware');
-
-//PÚBLICO//
-/* GET ALL PRODUCTS (GET)*/
+//********(R) MOSTRAR LISTADO DE PRODUCTOS********//
 router.get('/products', productController.showAll);
 
-/* PRODUCT DETAIL (GET)*/
+//********DETALLE DE PRODUCTO********//
 router.get('/productDetail/:product_id/', productController.showDetail);
 
-/* BUSQUEDA DE PRODUCTO (GET)*/
-//router.get('/products', productController.search);
+//********(U) EDITAR PRODUCTO********//
+router.get('/productEdit/:product_id', productController.editProduct);
+router.put('/productEdit/:product_id/', productController.updateProduct);
 
-//ADMINISTRADOR//
-/* GET ALL PRODUCTS (GET)*/
-//router.get('/products', productController.index);
+//********(D) BORRAR PRODUCTO********//
+router.delete('/productDelete/:product_id', productController.deleteProduct);
 
-/* CREATE A PRODUCT (GET/POST)*/
-router.get('/productCreate', productController.createProduct);
-router.post('/productCreate', upLoadFile.single('prodImage'), productController.saveNewProduct);
-
-/* GET EDIT PRODUCT (GET/PUT)*/
-//router.get('/edit/:id', productController.edit);
-//router.put('/edit/:id/', productController.update);
-
-/* GET DELETE PRODUCT (DELETE)*/
-//router.delete('/delete/:id', productController.destroy);
+//********BUSCAR PRODUCTO********//
+//router.get('/productSearch', productController.search);
 
 
 module.exports = router;

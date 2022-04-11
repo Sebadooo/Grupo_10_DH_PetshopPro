@@ -1,0 +1,513 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body {
+    width: 100vw;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(216, 4, 4);
+}
+
+.LogoPrincipal {
+    width: 20vw;
+    height: 15vw;
+    margin: 15px 0 15px 20px;
+    border-radius: 60px;
+    box-shadow: rgb(177, 2, 2) 10px 7px 7px;
+}
+
+h1.Titulo {
+    width: 50vw;
+    height: 5vw;
+    background-color: white;
+    margin: 50px 40px 0 20px;
+    padding: 0px;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: gray 2px 2px 2px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serifs;
+    font-size: 3rem;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    border: solid 1.5px rgb(177, 2, 2);
+    box-shadow: rgb(177, 2, 2) 10px 7px 7px;
+}
+
+.BarraDeMenu {
+    margin: 0;
+    width: 100vw;
+    background-color: rgb(216, 4, 4);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellow;
+    text-shadow: gray 2px 2px 2px;
+    display: flex;
+    justify-content: space-between;
+    border-top: gray 2px solid;
+    border-bottom: gray 2px solid;
+}
+
+.menu_1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 60vw;
+    font-size: 1.3rem;
+    font-weight: bold;
+    align-items: center;
+    padding: 10px 0 10px 0;
+}
+
+.botonAdmin {
+    display: flex;
+    justify-content: center;
+    width: 25vw;
+    font-size: 1.3rem;
+    font-weight: bold;
+    align-items: center;
+    padding: 10px 0 10px 0;
+}
+
+.menuLogin {
+    width: 20vw;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-start;
+    text-shadow: gray 5px;
+    padding: 20px 10px 40px 0;
+}
+
+.menuLogged {
+    width: 100%;
+    display: flex;
+    margin-bottom: 0%;
+    border-color: white solid 2px;
+    }
+
+.perfilYLogout {
+    margin: 0%;
+    padding: 10% 0 0 5%;
+    width: 100%;
+    align-items: center;
+    justify-content: justify;
+}
+.menuGuest {
+    margin: 0%;
+    padding: 10% 0 0 0;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+}
+.fotiContainer {
+    width: 30%;
+}
+.avatarcito {
+    width: 100%;
+    border-radius: 50px;
+    box-shadow: rgb(177, 2, 2) 10px 7px 7px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 5%;
+}
+
+a:link {
+    color: rgb(236, 194, 4);
+    text-shadow: gray 2px 2px 2px;
+}
+
+a:hover {
+    color: rgb(106, 1, 138);
+    text-shadow: white 2px 2px 2px;
+}
+
+a:visited {
+    color: none;
+}
+
+.loguitosNavBar {
+    justify-content: space-around;
+    width: 15vw;
+}
+/*********PRODUCTOS***********/
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0 20px 0;
+}
+.productImg {
+    width: 40vw;
+}
+.productoPerros {
+    display: flex;
+    justify-content: space-around;
+}
+.produ {
+    width: 25vw;
+    border: solid 2px grey;
+}
+.produ img {
+    width: 20vw;
+}
+.agregar-carrito {
+    width: 15vw;
+    margin: 5px 5vw 5px 5vw;
+}
+
+/**********FORMULARIOS***********/
+
+.título {
+    display: flex;
+    justify-content: center;
+    color: rgb(53, 52, 52);
+    text-shadow: rgb(218, 217, 217) 2px 2px 2px;
+    width: 100%;
+    font-family: exo 2;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 2vw 0 2vw 0;
+}
+.formularios {
+    display: flex;
+    justify-content: justify;
+    width: 100vw;
+    font-family: calibri;
+    padding: 0;
+    margin: 0 0 20px 0;
+    align-items: center;
+    font-weight: bold;
+}
+.bannersLat {
+    width: 30vw;
+}
+img.bannerLat {
+    width: 29vw;
+}
+img.imgCatHome {
+    width: 29vw;
+    box-shadow: white 10px 10px 10px;
+}
+form {
+    width: 40vw;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px ;
+    border-radius: 20px;
+    border: solid 1.5px rgb(177, 2, 2);
+    box-shadow: rgb(177, 2, 2) 7px 7px 7px;
+}
+.etiquetas1 {
+    font-size: 1.5rem;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin: 5px 0 5px 0;
+}
+.input {
+    width: 100%;
+    height: 30px;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 50px;
+    position: relative;
+    visibility: visible;
+}
+.imgProd
+.inputIncorrecto {
+    width: 100%;
+    height: 20px;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 50px;
+    position: relative;
+    border-color: red;
+    visibility: visible;
+}
+input {
+    width: 60%;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: rgb(165, 163, 163) 5px 5px 5px;
+}
+.botonFile{
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    text-shadow: rgb(165, 163, 163) 5px 5px 5px;
+    margin: 5px 0 5px 0;
+}
+.boton1 {
+    width: 100%;
+    display: flex;
+}
+button {
+    width: 60%;
+    height: 3vw;
+    justify-content: space-around;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(82, 161, 82);
+    margin: 15px 0 15px 20%;
+}
+.errorsFront {
+    color: red;
+    font-size: 15px;
+}
+.errorsBack {
+    color: red;
+    background-color: rgb(250, 174, 174);
+    font-size: 15px;
+    font-weight: bold;
+    width: 40vw;
+    display: block;
+    margin: 0 30vw 1vw 30vw;
+    padding: 10px;
+    align-items: center;
+    margin-right: 10px ;
+    border-radius: 20px;
+    border: solid 1.5px rgb(177, 2, 2);
+    box-shadow: rgb(177, 2, 2) 5px 5px 5px;
+}
+i.fa-check-circle {
+    color: green;
+    visibility: hidden;
+    position: absolute;
+    right: 23%;
+    top: 12%;
+}
+i.fa-exclamation-circle {
+    color: red;
+    visibility: hidden;
+    position: absolute;
+    right: 23%;
+    top: 12%;
+}
+small {
+    color: red;
+    visibility: hidden;
+    position: absolute;
+    top: 65%;
+    left: 22%;
+}
+.botoneraCrud {
+    display: flex;
+    justify-content: space-around;
+}
+.button-crud {
+    width: 40vw;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px ;
+    border-radius: 20px;
+    border: solid 1.5px rgb(177, 2, 2);
+    box-shadow: rgb(177, 2, 2) 7px 7px 7px;
+}
+.Detalle {
+    display: flex;
+    width: 100vw;
+    padding: 0%;
+    margin: 5vw 20vw 5vw 20vw;
+}
+.avatarContainer {
+    width: 40vw;
+    justify-content: flex-start;
+}
+img.avatar {
+    width: 30vw;
+    height: 45vw;
+    box-shadow: white 10px 10px 10px;
+    border-radius: 20px;
+}
+.dataDetalle {
+    width: 40vw;
+    justify-content: flex-end;
+    padding-top: 10vw;
+    line-height: 3vw;
+    align-items: center;
+}
+/**********FOOTER**********/
+
+.footer {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(216, 4, 4);
+    border: solid 2px lightgray;
+    font-size: 1.2rem;
+    line-height: 1rem;
+    position: relative;
+    padding: 15px;
+}
+.footer a {
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+@keyframes circACuad {
+    0% {
+        border-radius: 100px;
+        background-color: gold;
+    }
+    50% {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        background-color: orange;
+    }
+    100% {
+        border-radius: 0;
+        background-color: red;
+    }
+}
+
+.efectito {
+    width: 30px;
+    height: 30px;
+    border: solid 1px black;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    animation: circACuad 5s infinite alternate;
+}
+
+.titulin {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    text-align: center;
+    align-self: center;
+    font-size: 1.1rem;
+    padding: 0;
+    margin: 10px 0 10px 0;
+    text-decoration: underline;
+}
+
+.nosotros {
+    text-align: center;
+    align-self: center;
+    padding: 0;
+    margin: 0;
+    line-height: 30px;
+}
+
+.menuChico {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    text-align: center;
+    align-self: center;
+    line-height: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+ .contacto{
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    text-align: center;
+    align-self: center;
+    padding: 0;
+    margin: 0;}
+
+.sucursales {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    text-align: center;
+    align-self: center;
+    padding: 0;
+    margin: 0;}
+
+.LoguitoYRedes {
+    align-items: center;
+    justify-content: space-around;
+    line-height: 50px;
+}
+
+.fotito_footer {
+    text-align: center;
+    width: 15vw;
+    border-radius: 60px;
+    padding: 0;
+    margin: 0;   
+    box-shadow: rgb(177, 2, 2) 10px 7px 7px;
+    border-bottom: 15px;
+}
+
+.redes {
+    color: rgb(218, 217, 217);
+    text-shadow: black 2px 2px;
+    margin: 15px 0 15px 0;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/**********CARRITO DE COMPRAS***********/
+
+.carritoDeCompras {
+    display: flex;
+    justify-content: space-around;
+}
+
+.carritoBox1 {
+    width: 60vw;
+    background-color: white;
+    border: black 2px solid;
+}
+
+.carritoBox2 {
+    width: 30vw;
+    border: black 2px solid;
+}
+
+.botonAdd {
+    width: 50vw;
+    height: 80px;
+    color: rgb(82, 161, 82);
+    border: dashed 2px green;
+    border-radius: 6px 6px;
+    margin: 0 5vw 0 5vw;
+}
+
+.botonComprar {
+    width: 20vw;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: green;
+    color: lightgreen;
+    border: dashed 2px rgb(1, 83, 1);
+    border-radius: 6px 6px;
+    margin: 0 5vw 2vw 5vw;
+}
+.Textos {
+    justify-content: center;
+    align-content: center;
+    color: rgb(53, 52, 52);
+    text-shadow: rgb(218, 217, 217) 2px 2px 2px;
+    font-family: exo 2;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10%;
+    padding: 10%;
+    border: solid 2px red;
+    box-shadow: 10px gray;
+    border-radius: 6px 6px;
+}
+.add-carrito {
+    width: 25vw;
+    display: flex;
+    justify-content: flex-end;
+    size: 25vw;
+    align-self: center;
+    padding-right: 5vw;
+}

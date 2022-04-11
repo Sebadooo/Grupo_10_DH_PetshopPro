@@ -27,22 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         price: {
             type: DataTypes.DOUBLE,
-        },
-        creation_date: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        created_by: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        last_update_date: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        last_update_by: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+               
         } 
     };
 

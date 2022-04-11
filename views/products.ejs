@@ -11,7 +11,7 @@
                 <ul>
                 <% for (let i = 0; i < productos.length; i++){ %>
                     <li>
-                        <a href="productDetail/<%= productos[i].product_id%>"> 
+                        <a href="/productDetail/<%= productos[i].product_id%>"> 
                         <%= productos[i].product_name%>
                         </a>
                     </li>
@@ -19,8 +19,10 @@
                     </ul>
                 </div>
                 <div>
+                    <% if(locals.userLogged && locals.userLogged.user_category_id == 1) { %> 
                     <a href='productCreate' class="boton1">CREAR NUEVO PRODUCTO</a>
                 </div>  
+                <% } %> 
             </main>
 
             <%- include('partials/footer.ejs') %>

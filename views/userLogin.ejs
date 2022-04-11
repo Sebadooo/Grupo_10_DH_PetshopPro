@@ -10,9 +10,20 @@
 
             <main>
                 <h3 class="título">INICIA SESION</h3>
+                
+                <div class="errorsBack">
+                    <% if(locals && locals.errorMsg) { %> 
+                     <% for (let error in errorMsg) { %>
+                        <p class="errorMsg">
+                            <%=errorMsg [error].msg %>
+                        </p>
+                        <% } %>
+                        <% } %>
+                </div>
+
                 <section class="formularios">
                     <div class="bannersLat">
-                        <img src="/images/otros/Banner_Perro_Izq.jpg">
+                        <img class="bannerLat" src="/images/otros/Banner_Perro_Izq.jpg">
                     </div>
                     <form action="/userLogin" method="post">
                         <p class="etiquetas1">
@@ -32,13 +43,13 @@
                         </p>
                     </form>
                     <div class="bannersLat">
-                        <img src="images/otros/Banner_Gato_Der.jpg">
+                        <img class="bannerLat" src="/images/otros/Banner_Gato_Der.jpg">
                     </div>
                 </section>
             </main>
             <%- include('partials/footer.ejs') %>
 
-            <script src="/javascript/js-front.js"></script>
+            <!-- <script src="/javascript/js-front.js"></script> -->
         </body>
 
 </html>

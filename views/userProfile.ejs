@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head.ejs') %>
+
+    <body>
+        <%- include('partials/header.ejs') %>
+
+        <%- include('partials/navbar.ejs') %>
+
+            <main>
+                <section class="Detalle">
+                <div class="avatarContainer">
+                    <img class="avatar" src="/images/avatars/<%=User.image %>" alt="Avatar">
+                </div>
+                <div class="dataDetalle">
+                    <h2 font-style="upperCase"><%=User.first_name%> <%=User.last_name%></h2>
+                    <br> 
+                    <h3 class="">EMAIL: <%=User.email%></h3>
+                    <br>
+                    </div>
+            </section>
+                <div class="botoneraCrud">                    
+                                    <a class="button-crud" href="/userEdit/<%=User.user_id%>">
+                                    <button class="">EDITAR PERFIL</button>    
+                                    </a>
+
+                                <!-- //?_method=delete -->
+                                    <form action="/userDelete/<%=User.user_id%>" method="POST">
+                                        <button type="submit">CERRAR CUENTA</button>
+                                    </form>
+                                
+                </div>
+                
+            </main>
+            <%- include('partials/footer.ejs') %>
+    </body>
+
+</html>

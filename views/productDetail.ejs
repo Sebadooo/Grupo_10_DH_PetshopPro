@@ -8,30 +8,34 @@
         <%- include('partials/navbar.ejs') %>
 
             <main>
-<section class="productDetCard">
-                <div class="">
-                    <h3><%=producto.product_name%> </h3>
-                </div>
-                <div>
-                    <img src="<%=producto.image %>" alt="" width="200" height="150">
+                <section class="Detalle">
+                    <div class="avatarContainer">
+                        <img class="productImg" src="/images/products/<%=producto.image %>" alt="<%=producto.product_name%>">
+                    </div>
+                    <div class="dataDetalle">
+                    <h2> <%=producto.product_name%> </h2>
                     <br> 
+                    <h3 class="">- Descripción:   <%=producto.description%></h3>
                     <br>
-                    <p class=""> <%=producto.description%></p>
-                    <br>
-                    <h3 class="">CATEGORIA:  <%=producto.products_cat.category_name%></h3>
+                    <h3 class="">- Categoría:   "<%=producto.products_cat.category_name%>"</h3>
                     <br>
                 </div>
             </section>
-                <div>                    
-                                    <a href="/productEdit/<%=producto.product_id%>" class="action-button edit">
+                <div class="botoneraCrud">  
+                    <% if(locals.userLogged && locals.userLogged.user_category_id == 1) { %> 
+                        <a href="/productEdit/<%=producto.product_id%>" class="button-crud">
                                     <button>EDITAR</button>    
                                     </a>
 
                                 <!-- //?_method=delete -->
-                                    <form action="/productDelete/<%=producto.product_id%>" method="POST" style="display: inline-flex">
-                                        <button type="submit" class="action-button delete">ELIMINAR</button>
+                                    <form action="/productDelete/<%=producto.product_id%>" method="POST">
+                                        <button type="submit" >ELIMINAR</button>
                                     </form>
-                                
+                                <% } else { %> 
+                                    <form action="/shopCart/<%=producto.product_id%>" method="GET">
+                                        <button type="submit" >AGREGAR AL CARRITO</button>
+                                    </form>
+                                <% } %> 
                 </div>
                 
             </main>

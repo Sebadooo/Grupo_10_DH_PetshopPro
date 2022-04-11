@@ -1,10 +1,22 @@
 <header>
-    <img src="/images/Logo_1.jpg" alt="logo principal" class="LogoPrincipal">
+    <a href="../"><img src="/images/Logo_1.jpg" alt="logo principal" class="LogoPrincipal"></a>
     <h1 class="Titulo">Digital Petshop</h1>
     <section class="menuLogin">
-        <ul type="none">
-            <li><a href="userLogin">Iniciá sesión</a></li>
-            <li><a href="userRegister">Creá tu cuenta</a></li>
-        </ul>
+        <% if(locals.isLogged) { %> 
+        <div class="menuLogged">
+                <spam class="fotiContainer"><a href="./userProfile/"><img class="avatarcito" src="/images/avatars/<%=locals.userLogged.image %>" alt="miniavatar"></a></spam>
+            <ul class="perfilYLogout" type="none">
+                <li><a href="/userProfile/">Hola <%=locals.userLogged.first_name %></a></li>
+                <li><a href="/userLogout">Cerrar Sesion</a></li>            
+            </ul>
+        </div>
+        <% } else { %> 
+            <div class="menuGuest">
+            <ul class="" type="none">
+                <li><a href="/userLogin">Iniciá sesión</a></li>
+                <li><a href="/userRegister">Registrate</a></li>
+            </ul>
+    </div>        
+    <% } %>
     </section>
 </header>

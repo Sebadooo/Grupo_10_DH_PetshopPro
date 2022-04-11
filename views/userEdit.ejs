@@ -10,108 +10,75 @@
 
                 <main>
                     <h3 class="título">EDITAR USUARIO</h3>
-                    <div class="errorsFront">
-                       <ul>
-
-                       </ul> 
+                    
+                    <div class="errorsBack">
+                        <% if(locals && locals.errorMsg) { %> 
+                         <% for (let error in errorMsg) { %>
+                            <p class="errorMsg">
+                                <%=errorMsg [error].msg %>
+                            </p>
+                            <% } %>
+                            <% } %>    
                     </div>
                     <section class="formularios">
-                    
-                        <form class="edicion" action="userEdit/<%userToEdit.id%>" method="POST" enctype="multipart/form-data">
-
-                            <!-- < % if (locals.errors) { %>
-                                < % for (let oneError in errors) { %>
-                                    <p>
-                                        < %= errors[oneError].msg %>
-                                    </p>
-                                    < % } %>
-                                        < % } %> -->    
-                            <p class="etiquetas1">  
+                        <div class="bannersLat">
+                            <img class="bannerLat" src="/images/otros/Banner_Perro_Izq.jpg" />
+                          </div>
+                        <form class="edicion" action="userEdit/<%user.id%>" method="POST" enctype="multipart/form-data">
+                                    <p class="etiquetas1">  
                                 <label for="nombre">Nombre: </label>
                             </p>
                             <p class="input">
-                                <input type="text" name="first_name" value="<%=userToEdit.first_name%>" class="first_name">
+                                <input type="text" name="first_name" value="<%=user.first_name%>" class="first_name">
                             </p>
+                            </div>
                         
-                            <!-- < % if(locals.errors && errors.first_name) { %>
-                                <p class="errorEpress">
-                                    < %= errors.first_name.msg %>
-                                </p>
-                                < % } %> -->
-                            <!-- < % if (locals.errors && errors.first_name) { %>
-                                                <div class="text-danger">
-                                                    < %= errors.first_name.msg %>
-                                                    < % } %> -->
-                                                    
-                                                </div>
                             <p class="etiquetas1">
                                 <label for="apellido">Apellido: </label>
                             </p>
                             <p class="input">
-                                <input type="text" name="last_name" value="<%=userToEdit.last_name%>" class="last_name">
-                                
+                                <input type="text" name="last_name" value="<%=user.last_name%>" class="last_name">
                             </p>
-                            <!-- < % if (locals.errors && errors.last_name) { %>
-                                                        <div class="text-danger">
-                                                            < %= errors.last_name.msg %>
-                                                            < % } %> -->
+                            
                             <p class="etiquetas1">
                                 <label for="email">E-mail: </label>
                             </p>
                             <p class="input">
-                                <input type="email" name="email" value="<%=userToEdit.email%>" class="email">
-                                
+                                <input type="email" name="email" value="<%=user.email%>" class="email">    
                             </p>
-                            <!-- < % if (locals.errors && errors.email) { %>
-                                                        <div class="text-danger">
-                                                            < %= errors.email.msg %>
-                                                            < % } %> -->
+                            
                             <p class="etiquetas1">
                                 <label for="clave">Nueva Contraseña: </label>
                             </p>
                             <p class="input">
                                 <input type="password" name="password" class="password">
-                                
                             </p>
-                            <!-- < % if (locals.errors && errors.password %>
-                                                        <div class="text-danger">
-                                                            < %= errors.passwordmsg %>
-                                                            < % } %> -->
-                            <p class="etiquetas1">
+                            <div class="etiquetas1">
                                 <label for=""> Categoria: </label>  
-                                <select class="input" name="category">
-                                    <% for (let i = 0 ; i < category.length ; i++) { %>
-                                        <% if (category[i].user_id == userToEdit.user_category_id){%>
+                                <select class="" name="category">
+                                    <% for (let i = 0 ; i < userCat.length ; i++) { %>
+                                        <% if (userCat[i].user_category_id === user.user_category_id){%>
 
-                                            <option value="<%=category[i].user_id%>" selected>
-                                                <%=category.description%>
+                                            <option value="<%=userCat[i].user_category_id%>" selected>
+                                                <%=userCat[i].description%>
                                             </option>
                                         <% } else { %>
-                                            <option value="<%=category[i].user_id%>">
-
-                                            <%=category.description%>
+                                            <option value="<%=userCat[i].user_category_id%>">
+                                                <%=userCat[i].description%>
                                             </option>
                                         <% } %>
                                     <% } %>
-                                </p>
-                            
-                            <p class="etiquetas1">
-                                <label for="avatar">Foto de perfil: </label>
-                            </p>
-                            <p class="botonFile">    
-                                <input type="file" id="avatar" name="avatar" value="<%=userToEdit.avatar%>" accept=".jpg,.jpeg,.png,.gif">
-                            </p>
-                            <!-- < % if (locals.errors && errors.avatar) { %>
-                                                        <div class="text-danger">
-                                                            < %= errors.avatar.msg %>
-                                                            < % } %> -->
-                            <p class="boton1">
+                                </select>
+                                </div>
+                                <div class="boton1">
                                 <button type="submit">GUARDAR CAMBIOS</button>
-                            </p>
+                                </div>    
                         </form>
-                        
+                        <div class="bannersLat">
+                            <img class="bannerLat" src="/images/otros/Banner_Gato_Der.jpg" />
+                          </div>
                     </section>
-                    <script src="/javascript/registerVal.js" type="text/javascript"></script>
+                    <!-- <script src="/javascript/registerVal.js" type="text/javascript"></script> -->
                 </main>
 
                 <%- include('partials/footer.ejs') %>

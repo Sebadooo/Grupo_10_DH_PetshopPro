@@ -1,14 +1,22 @@
 <nav class="BarraDeMenu">
     <section>
-        <ul class="menu_1" type="none">
-            <li><a href="products">Productos</a></li>
-            <li><a href="aboutUs">Quienes somos</a></li>
-            <li><a href="contact">Contacto</a></li>
-            <li><a href="admin">Administrar</a></li>
-        </ul>
+        <div>
+            <ul class="menu_1" type="none">
+                <li><a href="/products/">Productos</a></li>
+                <li><a href="/aboutUs/">Quienes somos</a></li>
+                <li><a href="/contact/">Contacto</a></li>
+            </ul>
+        </div>
     </section>
+    <section>
+        <div class="botonAdmin">
+            <% if(locals.userLogged && userLogged.user_category_id == 1) { %>
+            <a href="/admin/">Administrar</a>
+            <% } %>
+    </div> 
+    </section> 
     <section class="add-carrito">
-        <a class="irCarrito" href="shopCart"><i class="fas fa-cart-plus"></i></a>
+                <a href="../shopCart"><i class="fas fa-cart-plus" ></i></a>
     </section>
     
 </nav>
